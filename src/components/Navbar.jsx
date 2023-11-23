@@ -9,7 +9,7 @@ export const NavbarComponent = () => {
     const user = true
 
     return (
-        <Navbar fluid={true} className="shadow-md">
+        <Navbar fluid={true} className="">
             <Navbar.Container className="flex items-center justify-between">
                 <Navbar.Brand className="flex items-center">
                     <img className="w-[40%] hidden md:flex" src={logo} alt="" />
