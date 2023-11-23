@@ -5,6 +5,8 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 import { useState } from 'react';
+import { Heart } from "phosphor-react";
+import { Avatar, Card } from "keep-react";
 
 
 const Home = () => {
@@ -91,7 +93,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* xxxxxx */}
+            {/* statistics section */}
             <section className='px-3 md:px-0 mt-40'>
 
                 <h1 className="xl:text-5xl md:text-4xl text-2xl font-semibold leading-tight text-center text-gray-800 sm:mb-0 mb-12">
@@ -117,8 +119,280 @@ const Home = () => {
                         </div>
                     </div>
                 </ScrollTrigger>
-
             </section>
+
+            {/* the top delivery man */}
+            <section className='my-40 mx-10'>
+                <h1 className='text-5xl text-center font-semibold mb-10 mt-16'>The Top Delivery Man</h1>
+                <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                    <div className="">
+                        <Card
+                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSize="md"
+                            className="max-w-xs">
+                            <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
+                                <Heart size={20} weight="bold" color="white" />
+                            </Card.Container>
+                            <Card.Container className="flex flex-col items-center justify-center">
+                                <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                </Card.Container>
+                                <Card.Container className="mb-3 mt-10 text-center">
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                </Card.Container>
+                                <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Delivered
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                    </Card.Container>
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Ratings
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                    </Card.Container>
+                                </Card.Container>
+                            </Card.Container>
+                        </Card>
+                    </div>
+                    <div className="">
+                        <Card
+                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSize="md"
+                            className="max-w-xs">
+                            <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
+                                <Heart size={20} weight="bold" color="white" />
+                            </Card.Container>
+                            <Card.Container className="flex flex-col items-center justify-center">
+                                <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                </Card.Container>
+                                <Card.Container className="mb-3 mt-10 text-center">
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                </Card.Container>
+                                <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Delivered
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                    </Card.Container>
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Ratings
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                    </Card.Container>
+                                </Card.Container>
+                            </Card.Container>
+                        </Card>
+                    </div>
+                    <div className="">
+                        <Card
+                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSize="md"
+                            className="max-w-xs">
+                            <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
+                                <Heart size={20} weight="bold" color="white" />
+                            </Card.Container>
+                            <Card.Container className="flex flex-col items-center justify-center">
+                                <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                </Card.Container>
+                                <Card.Container className="mb-3 mt-10 text-center">
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                </Card.Container>
+                                <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Delivered
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                    </Card.Container>
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Ratings
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                    </Card.Container>
+                                </Card.Container>
+                            </Card.Container>
+                        </Card>
+                    </div>
+                    <div className="">
+                        <Card
+                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSize="md"
+                            className="max-w-xs">
+                            <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
+                                <Heart size={20} weight="bold" color="white" />
+                            </Card.Container>
+                            <Card.Container className="flex flex-col items-center justify-center">
+                                <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                </Card.Container>
+                                <Card.Container className="mb-3 mt-10 text-center">
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                </Card.Container>
+                                <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Delivered
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                    </Card.Container>
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Ratings
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                    </Card.Container>
+                                </Card.Container>
+                            </Card.Container>
+                        </Card>
+                    </div>
+                    <div className="">
+                        <Card
+                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSize="md"
+                            className="max-w-xs">
+                            <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
+                                <Heart size={20} weight="bold" color="white" />
+                            </Card.Container>
+                            <Card.Container className="flex flex-col items-center justify-center">
+                                <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                </Card.Container>
+                                <Card.Container className="mb-3 mt-10 text-center">
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                </Card.Container>
+                                <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Delivered
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                    </Card.Container>
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Ratings
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                    </Card.Container>
+                                </Card.Container>
+                            </Card.Container>
+                        </Card>
+                    </div>
+                </div>
+            </section>
+
+            {/* testominial */}
+            <section className="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center" data-aos="zoom-in">
+                <div className="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800">
+                    <div className="w-full max-w-6xl mx-auto">
+                        <div className="text-center max-w-xl mx-auto">
+                            <h1 className="text-6xl md:text-7xl font-bold mb-5 text-gray-600">What people <br />are saying.</h1>
+                            <h3 className="text-xl mb-5 font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                            <div className="text-center mb-10">
+                                <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                                <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                                <span className="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
+                                <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                                <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                            </div>
+                        </div>
+                        <div className="-mx-3 md:flex items-start">
+                            <div className="px-3 md:w-1/3">
+                                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div className="w-full flex mb-4 items-center">
+                                        <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=1" alt="" />
+                                        </div>
+                                        <div className="flex-grow pl-3">
+                                            <h6 className="font-bold text-sm uppercase text-gray-600">Kenzie Edgar.</h6>
+                                        </div>
+                                    </div>
+                                    <div className="w-full">
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos sunt ratione dolor exercitationem minima quas itaque saepe quasi architecto vel! Accusantium, vero sint recusandae cum tempora nemo commodi soluta deleniti.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
+                                    </div>
+                                </div>
+                                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div className="w-full flex mb-4 items-center">
+                                        <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=2" alt="" />
+                                        </div>
+                                        <div className="flex-grow pl-3">
+                                            <h6 className="font-bold text-sm uppercase text-gray-600">Stevie Tifft.</h6>
+                                        </div>
+                                    </div>
+                                    <div className="w-full">
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum, dolor sit amet, consectetur adipisicing elit. Dolore quod necessitatibus, labore sapiente, est, dignissimos ullam error ipsam sint quam tempora vel.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="px-3 md:w-1/3">
+                                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div className="w-full flex mb-4 items-center">
+                                        <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=3" alt="" />
+                                        </div>
+                                        <div className="flex-grow pl-3">
+                                            <h6 className="font-bold text-sm uppercase text-gray-600">Tommie Ewart.</h6>
+                                        </div>
+                                    </div>
+                                    <div className="w-full">
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, obcaecati ullam excepturi dicta error deleniti sequi.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
+                                    </div>
+                                </div>
+                                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div className="w-full flex mb-4 items-center">
+                                        <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=4" alt="" />
+                                        </div>
+                                        <div className="flex-grow pl-3">
+                                            <h6 className="font-bold text-sm uppercase text-gray-600">Charlie Howse.</h6>
+                                        </div>
+                                    </div>
+                                    <div className="w-full">
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore voluptatum nostrum atque, corrupti, vitae esse id accusamus dignissimos neque reprehenderit natus, hic sequi itaque dicta nisi voluptatem! Culpa, iusto.<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="px-3 md:w-1/3">
+                                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div className="w-full flex mb-4 items-center">
+                                        <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=5" alt="" />
+                                        </div>
+                                        <div className="flex-grow pl-3">
+                                            <h6 className="font-bold text-sm uppercase text-gray-600">Nevada Herbertson.</h6>
+                                        </div>
+                                    </div>
+                                    <div className="w-full">
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, voluptatem porro obcaecati dicta, quibusdam sunt ipsum, laboriosam nostrum facere exercitationem pariatur deserunt tempora molestiae assumenda nesciunt alias eius? Illo, autem!<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
+                                    </div>
+                                </div>
+                                <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
+                                    <div className="w-full flex mb-4 items-center">
+                                        <div className="overflow-hidden rounded-full w-10 h-10 bg-gray-50 border border-gray-200">
+                                            <img src="https://i.pravatar.cc/100?img=6" alt="" />
+                                        </div>
+                                        <div className="flex-grow pl-3">
+                                            <h6 className="font-bold text-sm uppercase text-gray-600">Kris Stanton.</h6>
+                                        </div>
+                                    </div>
+                                    <div className="w-full">
+                                        <p className="text-sm leading-tight"><span className="text-lg leading-none italic font-bold text-gray-400 mr-1"></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem iusto, explicabo, cupiditate quas totam!<span className="text-lg leading-none italic font-bold text-gray-400 ml-1"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     );
 };
