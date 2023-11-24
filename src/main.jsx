@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthProvider from "./AuthProvider";
 import Dashboard from "./pages/dashboard/Dashboard";
+import BookParcel from "./pages/dashboard/User/BookParcel";
+import UserRoute from "./conditionalRoutes/UserRoute";
 
 const router = createBrowserRouter([
   {
@@ -19,9 +21,10 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/dashboard', element: <Dashboard />,
+    path: '/dashboard', element: <UserRoute> <Dashboard /></UserRoute>,
     children: [
-      { path: '/dashboard/home', element: <div>Hello Home</div> }
+      { path: '/dashboard/home', element: <div>Hello Home</div> },
+      { path: '/dashboard/book-parcel', element: <UserRoute><BookParcel /></UserRoute> }
     ]
   }
 ]);

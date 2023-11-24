@@ -1,5 +1,5 @@
 
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { NavbarComponent } from "../../components/Navbar";
 import { MdBookmarkAdd } from "react-icons/md";
 import { RxAvatar } from "react-icons/rx";
@@ -10,26 +10,27 @@ import { IoBookmarksSharp } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { SiPostman } from "react-icons/si";
 import { CgRowFirst } from "react-icons/cg";
+import Footer from "../../components/Footer";
 
 const Dashboard = () => {
 
-    const accType = 'admin'
+    const accType = 'bbb'
 
     const userLinks = <>
         <ul className="pt-2 pb-4 space-y-1 text-sm">
             <li className="">
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard'}><a className="flex items-center p-2 space-x-3 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
                         <path d="M68.983,382.642l171.35,98.928a32.082,32.082,0,0,0,32,0l171.352-98.929a32.093,32.093,0,0,0,16-27.713V157.071a32.092,32.092,0,0,0-16-27.713L272.334,30.429a32.086,32.086,0,0,0-32,0L68.983,129.358a32.09,32.09,0,0,0-16,27.713V354.929A32.09,32.09,0,0,0,68.983,382.642ZM272.333,67.38l155.351,89.691V334.449L272.333,246.642ZM256.282,274.327l157.155,88.828-157.1,90.7L99.179,363.125ZM84.983,157.071,240.333,67.38v179.2L84.983,334.39Z"></path>
                     </svg>
                     <span>Dashboard</span>
-                </a>
+                </a></NavLink>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard/book-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <MdBookmarkAdd className="text-2xl" />
                     <span>Book Parcel</span>
-                </a>
+                </a></NavLink>
             </li>
             <li>
                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
@@ -124,7 +125,7 @@ const Dashboard = () => {
         <div>
             <NavbarComponent />
             <div className="flex border">
-                <div className="h-full p-3 space-y-2 w-60 min-h-screen border">
+                <div className="h-full p-3 space-y-2 w-72 min-h-screen border">
                     <div className="flex items-center p-2 space-x-4">
                         <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full" />
                         <div>
@@ -158,10 +159,11 @@ const Dashboard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="p-10">
+                <div className="p-10 flex-1">
                     <Outlet />
                 </div>
             </div>
+            <div className=""><Footer /></div>
         </div>
     );
 };
