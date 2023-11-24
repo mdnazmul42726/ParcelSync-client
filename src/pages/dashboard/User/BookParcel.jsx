@@ -1,8 +1,22 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../AuthProvider";
 
 const BookParcel = () => {
     const { user } = useContext(AuthContext);
+
+    const [price, setPrice] = useState(0);
+
+    function handleCalculatePrice(kg) {
+        if (kg < 2) {
+            setPrice(50);
+        } else if (kg == 2) {
+            setPrice(100)
+        } else {
+            setPrice(150);
+        }
+    }
+
+    console.log(price);
 
     return (
         <div>
@@ -31,7 +45,7 @@ const BookParcel = () => {
                             </div>
                             <div className="">
                                 <label htmlFor="parcelWeight" className="text-sm">Parcel Weight<span className="text-red-600">*</span></label>
-                                <input id="parcelWeight" type="number" name="parcelWeight" placeholder="Enter Parcel Weight in KG" className="w-full rounded-md px-3 py-2 border" required />
+                                <input id="parcelWeight" type="number" name="parcelWeight" placeholder="Enter Parcel Weight in KG" className="w-full rounded-md px-3 py-2 border" required onChange={(event) => handleCalculatePrice(event.target.value)} />
                             </div>
                             <div className="">
                                 <label htmlFor="requestedDeliveryDate" className="text-sm">Requested Delivery Date<span className="text-red-600">*</span></label>
@@ -69,7 +83,7 @@ const BookParcel = () => {
                                 <input id="deliveryAddressLatitude" type="text" name="deliveryAddressLongitude" placeholder=" Longitude ex: (i.e 21.1211365496)" className="w-full rounded-md px-3 py-2 border" />
                             </div>
                         </div>
-                        <h2 className="text-2xl font-semibold my-3">Price: 200Tk</h2>
+                        <h2 className="text-2xl font-semibold my-3">Price: {price}Tk</h2>
                         <input type="submit" value='Book' className="px-5 mt-3 font-semibold rounded-sm hover:bg-red-600 cursor-pointer py-2 bg-red-500 text-white" />
                     </fieldset>
                 </form>
