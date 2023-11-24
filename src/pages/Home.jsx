@@ -48,7 +48,7 @@ const Home = () => {
                             <h1 className="text-xl font-semibold text-gray-700 capitalize "> Real-Time Parcel Tracking</h1>
 
                             <p className="text-gray-500 ">
-                                Stay in control with our real-time tracking feature, allowing you to monitor your parcel's journey from pickup to delivery, ensuring transparency and peace of mind.
+                                Stay in control with our real-time tracking feature, allowing you to monitor your parcel journey from pickup to delivery, ensuring transparency and peace of mind.
                             </p>
 
                             <a href="#" className="flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform hover:underline hover:text-blue-600">

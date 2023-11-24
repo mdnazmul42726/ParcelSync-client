@@ -6,7 +6,7 @@ import logo from '../assets/logo.png';
 
 
 export const NavbarComponent = () => {
-    const user = true
+    const user = false
 
     return (
         <Navbar fluid={true} className="">
@@ -26,9 +26,9 @@ export const NavbarComponent = () => {
                         <Navbar.Toggle className="block" />
                         <div className="flex items-center gap-4">
                             <div className="hidden lg:flex gap-4">
-                                <NavLink>Home</NavLink>
-                                <NavLink>About</NavLink>
-                                <NavLink>Contact</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/'}>Home</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'about'}>About</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/contact'}>Contact</NavLink>
                             </div>
                             {user ? <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -47,7 +47,7 @@ export const NavbarComponent = () => {
                                     <li><a>Logout</a></li>
                                 </ul>
                             </div> :
-                                <NavLink>Login</NavLink>}
+                                <NavLink to={'/login'} className={({ isActive }) => isActive ? 'text-red-500' : ''}>Login</NavLink>}
                         </div>
                     </Navbar.Container>
                 </Navbar.Container>
