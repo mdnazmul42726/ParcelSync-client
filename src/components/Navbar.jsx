@@ -1,12 +1,36 @@
 
-"use client";
 import { Navbar } from "keep-react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/logo.png';
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider";
+import Swal from "sweetalert2";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase.config";
 
 
 export const NavbarComponent = () => {
-    const user = false
+    const { user } = useContext(AuthContext);
+
+    function handleLogOut() {
+        Swal.fire({
+            title: "Do you want to log out?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                signOut(auth).then(() => {
+                    Swal.fire({
+                        title: "Logged Out.",
+                        icon: "success"
+                    });
+                })
+            }
+        });
+    }
 
     return (
         <Navbar fluid={true} className="">
@@ -33,18 +57,18 @@ export const NavbarComponent = () => {
                             {user ? <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        <img alt="Tailwind CSS Navbar component" src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                        <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-72">
                                     <li>
                                         <a className="justify-between">
-                                            Profile
+                                            {user.displayName}
                                             <span className="badge">New</span>
                                         </a>
                                     </li>
-                                    <li><a>Settings</a></li>
-                                    <li><a>Logout</a></li>
+                                    <li><Link to={'/dashboard'}>Dashboard</Link></li>
+                                    <li><a className="text-red-500 font-bold" onClick={handleLogOut}>Logout</a></li>
                                 </ul>
                             </div> :
                                 <NavLink to={'/login'} className={({ isActive }) => isActive ? 'text-red-500' : ''}>Login</NavLink>}

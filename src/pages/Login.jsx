@@ -1,10 +1,33 @@
+import { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
+    const { logInWithEmailAndPassword, signInWithGithub, signInWithGoogle } = useContext(AuthContext);
+
+    function handleLogin(event) {
+        event.preventDefault();
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const toastID = toast.loading('Working...');
+
+        logInWithEmailAndPassword(email, password).then((userCredential) => {
+            toast.success('Login Successful.', { id: toastID })
+
+        }).catch(err => toast.error(err.code, { id: toastID }))
+
+    }
+
+    function handleSocialLogin(media) {
+        const toastID = toast.loading('Working...');
+        media().then(userCredential => toast.success('Login Successful.', { id: toastID })).catch(err => toast.error(err.code, { id: toastID }))
+    }
+
     return (
         <div className="w-full md:w-[70%] lg:w-[35%] mx-auto mb-20 mt-10 md:mt-2 lg:mt-0 shadow-md p-5 rounded-md">
-            <form className="card-body">
+            <form className="card-body" onSubmit={handleLogin}>
                 <h1 className="text-3xl font-bold">Login</h1>
                 <div className="form-control">
                     <label className="label">
@@ -28,10 +51,11 @@ const Login = () => {
             <h3 className='text-center'>Or Sign in with</h3>
             <div className="flex justify-center gap-3 text-xl mt-3 mb-4">
                 {/* <FaFacebook className='text-sky-700 cursor-pointer' /> */}
-                <FaGithub className='text-sky-800 cursor-pointer' />
-                <FaGoogle className='text-red-600 cursor-pointer' />
+                <FaGithub className='text-sky-800 cursor-pointer' onClick={() => handleSocialLogin(signInWithGithub)} />
+                <FaGoogle className='text-red-600 cursor-pointer' onClick={() => handleSocialLogin(signInWithGoogle)} />
             </div>
             <p className='mb-5 text-center'>Don`t have an account? <Link className='text-red-500 font-bold' to={"/register"}>Register</Link></p>
+            <Toaster />
         </div >
     );
 };

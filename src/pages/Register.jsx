@@ -8,7 +8,7 @@ import { updateProfile } from 'firebase/auth';
 import { auth } from '../firebase.config';
 
 const Register = () => {
-    const { signUpUserWithEmailAndPassword, user } = useContext(AuthContext);
+    const { signUpUserWithEmailAndPassword, signInWithGoogle, signInWithGithub, user } = useContext(AuthContext);
     console.log(user);
 
     async function handleRegister(event) {
@@ -49,6 +49,11 @@ const Register = () => {
 
         console.log(response.data.status)
 
+    }
+
+    function handleSocialSignIn(media) {
+        const toastID = toast.loading('Working...');
+        media().then((userCredential) => toast.success('Login Successful.', { id: toastID })).catch(err => toast.error(err.code, { id: toastID }))
     }
 
     return (
@@ -103,8 +108,8 @@ const Register = () => {
             <h3 className='text-center'>Or Sign Up with</h3>
             <div className="flex justify-center gap-3 text-xl mt-3 mb-4">
                 {/* <FaFacebook className='text-sky-700 cursor-pointer' /> */}
-                <FaGithub className='text-sky-800 cursor-pointer' />
-                <FaGoogle className='text-red-600 cursor-pointer' />
+                <FaGithub className='text-sky-800 cursor-pointer' onClick={() => handleSocialSignIn(signInWithGithub)} />
+                <FaGoogle className='text-red-600 cursor-pointer' onClick={() => handleSocialSignIn(signInWithGoogle)} />
             </div>
             <p className='mb-5 text-center'>Already have an account? <Link className='text-red-500 font-bold' to={"/login"}>Login</Link></p>
             <div><Toaster /></div>
