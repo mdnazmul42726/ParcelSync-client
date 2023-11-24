@@ -7,17 +7,23 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AuthProvider from "./AuthProvider";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Root />,
+    path: "/", element: <Root />,
     children: [
       { index: true, element: <Home /> },
       { path: '/login', element: <Login /> },
       { path: '/register', element: <Register /> }
     ]
   },
+  {
+    path: '/dashboard', element: <Dashboard />,
+    children: [
+      { path: '/dashboard/home', element: <div>Hello Home</div> }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
