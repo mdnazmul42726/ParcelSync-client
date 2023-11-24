@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
@@ -8,8 +8,15 @@ import { updateProfile } from 'firebase/auth';
 import { auth } from '../firebase.config';
 
 const Register = () => {
-    const { signUpUserWithEmailAndPassword, signInWithGoogle, signInWithGithub, user } = useContext(AuthContext);
-    console.log(user);
+    const { signUpUserWithEmailAndPassword, signInWithGoogle, signInWithGithub} = useContext(AuthContext);
+    const [deliveryManID, setDeliveryManID] = useState(null);
+
+    function handleDeliveryManID(acc_type) {
+        if (acc_type == 'Delivery Man') {
+            const randomNumber = Math.floor(10000000 + Math.random() * 90000000);
+            setDeliveryManID(randomNumber)
+        }
+    }
 
     async function handleRegister(event) {
         event.preventDefault();
@@ -43,9 +50,9 @@ const Register = () => {
             signUpUserWithEmailAndPassword(email, password).then(() => {
                 updateProfile(auth.currentUser, { displayName: name, photoURL: response.data.data.display_url });
 
-                const user = { name, email, accType };
+                const userinfo = { name, email, accType, ID: deliveryManID };
                 toast.success('Account created.', { id: toastID })
-                axios.post('http://localhost:5000/users/v1', user).then(res => {
+                axios.post('http://localhost:5000/users/v1', userinfo).then(res => {
                     console.log(res.data);
                 }).catch(err => console.log(err))
 
@@ -84,7 +91,7 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Account type</span>
                     </label>
-                    <select name='accType' required className="select select-bordered w-full">
+                    <select name='accType' required className="select select-bordered w-full" onChange={(event) => handleDeliveryManID(event.target.value)}>
                         <option disabled selected>Select Account Type</option>
                         <option value="Customer" className='className="input input-bordered"'>Customer</option>
                         <option value="Delivery Man" className='className="input input-bordered"'>Delivery Man</option>

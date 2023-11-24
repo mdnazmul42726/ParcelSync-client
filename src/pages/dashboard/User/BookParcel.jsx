@@ -5,6 +5,8 @@ const BookParcel = () => {
     const { user } = useContext(AuthContext);
 
     const [price, setPrice] = useState(0);
+    const bookingDate = new Date().toLocaleDateString();
+
 
     function handleCalculatePrice(kg) {
         if (kg < 2) {
@@ -16,12 +18,29 @@ const BookParcel = () => {
         }
     }
 
-    console.log(price);
+    function handleBooking(event) {
+        event.preventDefault();
+        const form = event.target;
+        const senderName = form.senderName.value;
+        const senderEmail = form.senderEmail.value;
+        const senderPhoneNumber = form.senderPhoneNumber.value;
+        const parcelType = form.parcelType.value;
+        const parcelWeight = form.parcelWeight.value;
+        const RequestedDeliveryDate = form.RequestedDeliveryDate.value;
+        const receiverName = form.receiverName.value;
+        const ReceiverPhoneNumber = form.ReceiverPhoneNumber.value;
+        const deliveryAddress = form.deliveryAddress.value;
+        const receiverEmail = form.receiverEmail.value;
+        const deliveryAddressLatitude = form.deliveryAddressLatitude.value;
+        const deliveryAddressLongitude = form.deliveryAddressLongitude.value;
+
+        console.log(senderEmail, senderName, senderPhoneNumber, parcelType, parcelWeight, RequestedDeliveryDate, receiverEmail, receiverName, ReceiverPhoneNumber, deliveryAddress, deliveryAddressLatitude, deliveryAddressLongitude);
+    }
 
     return (
         <div>
             <section className="p-6">
-                <form className="container flex flex-col mx-auto space-y-12">
+                <form className="container flex flex-col mx-auto space-y-12" onSubmit={handleBooking}>
                     <fieldset className="shadow-sm p-4">
                         <p className="text-xl font-semibold mb-10">Sender Information</p>
                         <div className="grid grid-cols-3 gap-4">
@@ -35,7 +54,7 @@ const BookParcel = () => {
                             </div>
                             <div className="">
                                 <label htmlFor="number" className="text-sm">Phone Number<span className="text-red-600">*</span></label>
-                                <input id="number" type="number" name="senderNumber" placeholder="Enter Your Phone Number" className="w-full rounded-md px-3 py-2 border" required />
+                                <input id="number" type="number" name="senderPhoneNumber" placeholder="Enter Your Phone Number" className="w-full rounded-md px-3 py-2 border" required />
                             </div>
                         </div>
                         <div className="grid grid-cols-3 gap-4 mt-5">
@@ -65,14 +84,12 @@ const BookParcel = () => {
                                 <input id="ReceiverPhoneNumber" type="number" name="ReceiverPhoneNumber" placeholder="Enter Receiver Phone Number" className="w-full rounded-md px-3 py-2 border" required />
                             </div>
                             <div className="">
+                                <label htmlFor="receiverEmail" className="text-sm">Receiver Email Address<span className="text-red-600">*</span></label>
+                                <input id="receiverEmail" type="email" name="receiverEmail" placeholder="Enter Your Parcel Type" className="w-full rounded-md px-3 py-2 border" required />
+                            </div>
+                            <div className="">
                                 <label htmlFor="deliveryAddress" className="text-sm">Delivery Address<span className="text-red-600">*</span></label>
                                 <input id="deliveryAddress" type="text" name="deliveryAddress" placeholder="Enter Parcel Delivery Address" className="w-full rounded-md px-3 py-2 border" required />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-3 gap-4 mt-5">
-                            <div className="">
-                                <label htmlFor="Name" className="text-sm">Parcel Type<span className="text-red-600">*</span></label>
-                                <input id="Name" type="text" name="parcelType" placeholder="Enter Your Parcel Type" className="w-full rounded-md px-3 py-2 border" required />
                             </div>
                             <div className="">
                                 <label htmlFor="deliveryAddressLatitude" className="text-sm">Delivery Address Latitude</label>

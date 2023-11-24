@@ -11,10 +11,23 @@ import { FaUsers } from "react-icons/fa";
 import { SiPostman } from "react-icons/si";
 import { CgRowFirst } from "react-icons/cg";
 import Footer from "../../components/Footer";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Dashboard = () => {
+    const { user } = useContext(AuthContext)
 
-    const accType = 'bbb'
+    const { data = [] } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const response = await axios.get(`http://localhost:5000/user/v1?email=${user.email}`);
+            return response.data
+        }
+    });
+
+    console.log(data)
 
     const userLinks = <>
         <ul className="pt-2 pb-4 space-y-1 text-sm">
@@ -136,7 +149,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="divide-y">
-                        {accType == 'admin' ? adminLinks : accType == 'Delivery Man' ? deliveryManLinks : userLinks}
+                        {data?.accType == 'Admin' ? adminLinks : data?.accType == 'Delivery Man' ? deliveryManLinks : userLinks}
                         <ul className="pt-4 pb-2 space-y-1 text-sm">
                             <li>
                                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
