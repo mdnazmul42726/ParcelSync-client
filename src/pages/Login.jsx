@@ -3,6 +3,7 @@ import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
     const { logInWithEmailAndPassword, signInWithGithub, signInWithGoogle } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Login = () => {
         const password = event.target.password.value;
         const toastID = toast.loading('Working...');
 
-        logInWithEmailAndPassword(email, password).then((userCredential) => {
+        logInWithEmailAndPassword(email, password).then(() => {
             toast.success('Login Successful.', { id: toastID })
 
         }).catch(err => toast.error(err.code, { id: toastID }))
@@ -22,7 +23,16 @@ const Login = () => {
 
     function handleSocialLogin(media) {
         const toastID = toast.loading('Working...');
-        media().then(userCredential => toast.success('Login Successful.', { id: toastID })).catch(err => toast.error(err.code, { id: toastID }))
+        media().then(userCredential => {
+            toast.success('Login Successful.', { id: toastID })
+
+            const userInfo = { name: userCredential.user.displayName, email: userCredential.user.email, accType: 'Customer' };
+            console.log(userInfo);
+
+            axios.post('http://localhost:5000/users/v1', userInfo).then(res => console.log(res.data)).catch(err => console.log(err));
+            console.log(userInfo);
+
+        }).catch(err => toast.error(err.code, { id: toastID }))
     }
 
     return (

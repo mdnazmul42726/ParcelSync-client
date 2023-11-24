@@ -42,7 +42,12 @@ const Register = () => {
         if (response.data.status == 200) {
             signUpUserWithEmailAndPassword(email, password).then(() => {
                 updateProfile(auth.currentUser, { displayName: name, photoURL: response.data.data.display_url });
+
+                const user = { name, email, accType };
                 toast.success('Account created.', { id: toastID })
+                axios.post('http://localhost:5000/users/v1', user).then(res => {
+                    console.log(res.data);
+                }).catch(err => console.log(err))
 
             }).catch(err => toast.error(err.code, { id: toastID }));
         }
@@ -53,7 +58,16 @@ const Register = () => {
 
     function handleSocialSignIn(media) {
         const toastID = toast.loading('Working...');
-        media().then((userCredential) => toast.success('Login Successful.', { id: toastID })).catch(err => toast.error(err.code, { id: toastID }))
+        media().then((userCredential) => {
+            toast.success('Login Successful.', { id: toastID });
+
+            const userInfo = { name: userCredential.user.displayName, email: userCredential.user.email, accType: 'Customer' };
+            console.log(userInfo);
+
+            axios.post('http://localhost:5000/users/v1', userInfo).then(res => console.log(res)).catch(err => console.log(err));
+            console.log(userInfo);
+
+        }).catch(err => toast.error(err.code, { id: toastID }))
     }
 
     return (
