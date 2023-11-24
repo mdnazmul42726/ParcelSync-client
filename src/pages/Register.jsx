@@ -1,10 +1,59 @@
+import axios from 'axios';
+import { useContext } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { FaGithub, FaGoogle } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../firebase.config';
 
 const Register = () => {
+    const { signUpUserWithEmailAndPassword, user } = useContext(AuthContext);
+    console.log(user);
+
+    async function handleRegister(event) {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const accType = form.accType.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const conPassword = form.conPassword.value;
+        const image = form.image.files[0];
+
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
+        const toastID = toast.loading('Working...')
+
+        if (!regex.test(password)) {
+            toast.error('Password must have minimum eight characters, at least one letter, one number and one special character', { id: toastID });
+            return
+
+        } else if (password !== conPassword) {
+            toast.error('Password did not match!', { id: toastID });
+            return
+        }
+
+        const response = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API}`, formData);
+
+        if (response.data.status == 200) {
+            signUpUserWithEmailAndPassword(email, password).then(() => {
+                updateProfile(auth.currentUser, { displayName: name, photoURL: response.data.data.display_url });
+                toast.success('Account created.', { id: toastID })
+
+            }).catch(err => toast.error(err.code, { id: toastID }));
+        }
+
+        console.log(response.data.status)
+
+    }
+
     return (
         <div className='w-full md:w-[70%] lg:w-[35%] mx-auto mb-20 mt-10 md:mt-2 lg:mt-0 shadow-md rounded-md p-3'>
-            <form className="card-body">
+            <form className="card-body" onSubmit={handleRegister}>
                 <h1 className="text-3xl font-bold">Register</h1>
                 <div className="form-control">
                     <label className="label">
@@ -36,9 +85,15 @@ const Register = () => {
                 </div>
                 <div className="form-control">
                     <label className="label">
+                        <span className="label-text">Confirm Password</span>
+                    </label>
+                    <input type="password" name='conPassword' placeholder="Re-type Password" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                    <label className="label">
                         <span className="label-text">Profile Picture</span>
                     </label>
-                    <input type="file" className="file-input file-input-bordered file-input-sm w-full " />
+                    <input type="file" name='image' className="file-input file-input-bordered file-input-sm w-full " />
                 </div>
 
                 <div className="form-control mt-5">
@@ -52,6 +107,7 @@ const Register = () => {
                 <FaGoogle className='text-red-600 cursor-pointer' />
             </div>
             <p className='mb-5 text-center'>Already have an account? <Link className='text-red-500 font-bold' to={"/login"}>Login</Link></p>
+            <div><Toaster /></div>
         </div>
     );
 };
