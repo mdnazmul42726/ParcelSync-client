@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   {
     path: '/dashboard', element: <UserRoute> <Dashboard /></UserRoute>,
     children: [
-      { path: '/dashboard/home', element: <div>Hello Home</div> },
+      { index: true, element: <div>Hello Home</div> },
       { path: '/dashboard/book-parcel', element: <UserRoute><BookParcel /></UserRoute> }
     ]
   }

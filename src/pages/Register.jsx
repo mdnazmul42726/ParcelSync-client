@@ -8,7 +8,7 @@ import { updateProfile } from 'firebase/auth';
 import { auth } from '../firebase.config';
 
 const Register = () => {
-    const { signUpUserWithEmailAndPassword, signInWithGoogle, signInWithGithub} = useContext(AuthContext);
+    const { signUpUserWithEmailAndPassword, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const [deliveryManID, setDeliveryManID] = useState(null);
 
     function handleDeliveryManID(acc_type) {
@@ -50,7 +50,7 @@ const Register = () => {
             signUpUserWithEmailAndPassword(email, password).then(() => {
                 updateProfile(auth.currentUser, { displayName: name, photoURL: response.data.data.display_url });
 
-                const userinfo = { name, email, accType, ID: deliveryManID };
+                const userinfo = { name, email, accType, ID: deliveryManID, spent: 0 };
                 toast.success('Account created.', { id: toastID })
                 axios.post('http://localhost:5000/users/v1', userinfo).then(res => {
                     console.log(res.data);

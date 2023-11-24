@@ -139,12 +139,12 @@ const Dashboard = () => {
             <NavbarComponent />
             <div className="flex border">
                 <div className="h-full p-3 space-y-2 w-72 min-h-screen border">
-                    <div className="flex items-center p-2 space-x-4">
-                        <img src="https://source.unsplash.com/100x100/?portrait" alt="" className="w-12 h-12 rounded-full" />
+                    <div className="flex items-center space-x-4">
+                        <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-full" />
                         <div>
-                            <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
+                            <h2 className="text-lg font-semibold">{user?.displayName}</h2>
                             <span className="flex items-center space-x-1">
-                                <a rel="noopener noreferrer" href="#" className="text-xs hover:underline">View profile</a>
+                                <p className="text-xs">{data?.accType}</p>
                             </span>
                         </div>
                     </div>
