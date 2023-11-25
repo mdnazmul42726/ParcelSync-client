@@ -3,11 +3,12 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyParcel = () => {
     const { user } = useContext(AuthContext);
 
-    const { data = [] } = useQuery({
+    const { data = [], refetch } = useQuery({
         queryKey: ['booked parcel data'],
         queryFn: async () => {
             const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}`);
@@ -15,7 +16,34 @@ const MyParcel = () => {
         }
     });
 
-    console.log(data);
+    function handleCancelBook(_id) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Once you cancel, you can't undo it",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, Cancel it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                axios.patch(`http://localhost:5000/book/update/v1/${_id}`).then(res => {
+
+                    if (res.data.modifiedCount > 0) {
+                        Swal.fire({
+                            title: "Cancelled!",
+                            text: "Item has been successfully Cancelled .",
+                            icon: "success"
+                        });
+                        refetch();
+                    }
+                }).catch(err => console.log(err))
+
+            }
+        });
+    }
 
     return (
         <div className="">
@@ -56,7 +84,7 @@ const MyParcel = () => {
                             <tr className="bg-white border-b">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{book.deliveryMan ? book.deliveryMan : 'N/A'}</th>
                                 <td className="px-6 py-4">{book.receiverName}</td>
-                                <td className={book.status == 'Pending' ? 'px-6 py-4' : book.status == 'On The Way' ? 'px-6 py-4 text-sky-500' : book.status == 'Canceled' ? 'px-6 py-4 text-red-600' : 'px-6 py-4 text-blue-600'}>{book.status}</td>
+                                <td className={book.status == 'Pending' ? 'px-6 py-4' : book.status == 'On The Way' ? 'px-6 py-4 text-sky-500' : book.status == 'Cancelled' ? 'px-6 py-4 text-red-600' : 'px-6 py-4 text-blue-600'}>{book.status}</td>
                                 <td className="px-6 py-4">
                                     TK {book.price}
                                 </td>
@@ -67,7 +95,7 @@ const MyParcel = () => {
                 <div className="flex justify-end mr-10 p-3">
                     {book.status == 'Delivered' ? <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Review</a>
                         : <> <Link to={`/dashboard/edit/${book._id}`}><button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-blue-600'}><a className="font-medium hover:underline">Edit</a></button></Link>
-                            <button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-red-600'}> <a className="font-medium hover:underline ms-3">Cancel</a> </button> </>}
+                            <button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-red-600'}> <a className="font-medium hover:underline ms-3" onClick={() => handleCancelBook(book._id)}>Cancel</a> </button> </>}
                 </div>
             </div>)}
         </div>
