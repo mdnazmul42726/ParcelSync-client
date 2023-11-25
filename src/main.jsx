@@ -13,6 +13,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import BookParcel from "./pages/dashboard/User/BookParcel";
 import UserRoute from "./conditionalRoutes/UserRoute";
 import MyParcel from "./pages/dashboard/User/MyParcel";
+import UpdateBook from "./pages/dashboard/User/UpdateBook";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <div>Hello Home</div> },
       { path: '/dashboard/book-parcel', element: <UserRoute><BookParcel /></UserRoute> },
-      { path: '/dashboard/my-parcel', element: <MyParcel /> }
+      { path: '/dashboard/my-parcel', element: <UserRoute><MyParcel /></UserRoute> },
+      { path: '/dashboard/edit/:id', element: <UserRoute><UpdateBook /></UserRoute>, loader: ({ params }) => fetch(`http://localhost:5000/book/edit/${params.id}`) }
     ]
   }
 ]);

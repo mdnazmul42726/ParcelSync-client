@@ -105,12 +105,12 @@ const BookParcel = () => {
                                 <input id="deliveryAddress" type="text" name="deliveryAddress" placeholder="Enter Parcel Delivery Address" className="w-full rounded-md px-3 py-2 border" required />
                             </div>
                             <div className="">
-                                <label htmlFor="deliveryAddressLatitude" className="text-sm">Delivery Address Latitude</label>
-                                <input id="deliveryAddressLatitude" type="text" name="deliveryAddressLatitude" placeholder=" Latitude ex: (i.e 21.1211365496)" className="w-full rounded-md px-3 py-2 border" />
+                                <label htmlFor="deliveryAddressLatitude" className="text-sm">Delivery Address Latitude<span className="text-red-600">*</span></label>
+                                <input id="deliveryAddressLatitude" type="text" name="deliveryAddressLatitude" placeholder=" Latitude ex: (i.e 21.1211365496)" className="w-full rounded-md px-3 py-2 border" required  />
                             </div>
                             <div className="">
-                                <label htmlFor="deliveryAddressLongitude" className="text-sm">Delivery Address Longitude</label>
-                                <input id="deliveryAddressLatitude" type="text" name="deliveryAddressLongitude" placeholder=" Longitude ex: (i.e 21.1211365496)" className="w-full rounded-md px-3 py-2 border" />
+                                <label htmlFor="deliveryAddressLongitude" className="text-sm">Delivery Address Longitude<span className="text-red-600">*</span></label>
+                                <input id="deliveryAddressLongitude" type="text" name="deliveryAddressLongitude" placeholder=" Longitude ex: (i.e 21.1211365496)" className="w-full rounded-md px-3 py-2 border" required/>
                             </div>
                         </div>
                         <h2 className="text-2xl font-semibold my-3">Price: {price}Tk</h2>

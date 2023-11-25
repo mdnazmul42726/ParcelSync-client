@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider";
+import { Link } from "react-router-dom";
 
 const MyParcel = () => {
     const { user } = useContext(AuthContext);
@@ -47,7 +48,7 @@ const MyParcel = () => {
                                 <th scope="col" className="px-6 py-3">Receiver Name</th>
                                 <th scope="col" className="px-6 py-3">Booking Status</th>
                                 <th scope="col" className="px-6 py-3">
-                                    Price
+                                    Cost
                                 </th>
                             </tr>
                         </thead>
@@ -57,7 +58,7 @@ const MyParcel = () => {
                                 <td className="px-6 py-4">{book.receiverName}</td>
                                 <td className={book.status == 'Pending' ? 'px-6 py-4' : book.status == 'On The Way' ? 'px-6 py-4 text-sky-500' : book.status == 'Canceled' ? 'px-6 py-4 text-red-600' : 'px-6 py-4 text-blue-600'}>{book.status}</td>
                                 <td className="px-6 py-4">
-                                    $2999
+                                    TK {book.price}
                                 </td>
                             </tr>
                         </tbody>
@@ -65,7 +66,7 @@ const MyParcel = () => {
                 </div>
                 <div className="flex justify-end mr-10 p-3">
                     {book.status == 'Delivered' ? <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Review</a>
-                        : <> <button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-blue-600'}><a className="font-medium hover:underline">Edit</a></button>
+                        : <> <Link to={`/dashboard/edit/${book._id}`}><button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-blue-600'}><a className="font-medium hover:underline">Edit</a></button></Link>
                             <button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-red-600'}> <a className="font-medium hover:underline ms-3">Cancel</a> </button> </>}
                 </div>
             </div>)}
