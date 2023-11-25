@@ -9,12 +9,11 @@ import noData from '../../../assets/BkQxD7wtnZ.gif';
 const MyParcel = () => {
     const { user } = useContext(AuthContext);
     const [item, setItem] = useState([]);
-    const [status, setStatus] = useState('')
 
     const { refetch } = useQuery({
         queryKey: ['booked parcel data'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}&status=${status}`);
+            const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}`);
             return setItem(response.data)
         }
     });

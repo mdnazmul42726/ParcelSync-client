@@ -15,6 +15,7 @@ import UserRoute from "./conditionalRoutes/UserRoute";
 import MyParcel from "./pages/dashboard/User/MyParcel";
 import UpdateBook from "./pages/dashboard/User/UpdateBook";
 import Profile from "./pages/dashboard/User/Profile";
+import AllParcel from "./pages/dashboard/Admin/AllParcel";
 
 const router = createBrowserRouter([
   {
@@ -29,10 +30,15 @@ const router = createBrowserRouter([
     path: '/dashboard', element: <UserRoute> <Dashboard /></UserRoute>,
     children: [
       { index: true, element: <div>Hello Home</div> },
+
+      // Customer routes
       { path: '/dashboard/book-parcel', element: <UserRoute><BookParcel /></UserRoute> },
       { path: '/dashboard/my-parcel', element: <UserRoute><MyParcel /></UserRoute> },
       { path: '/dashboard/edit/:id', element: <UserRoute><UpdateBook /></UserRoute>, loader: ({ params }) => fetch(`http://localhost:5000/book/edit/${params.id}`) },
-      { path: '/dashboard/profile', element: <UserRoute><Profile /></UserRoute> }
+      { path: '/dashboard/profile', element: <UserRoute><Profile /></UserRoute> },
+
+      // Admin routes
+      { path: '/dashboard/all-parcel', element: <AllParcel /> }
     ]
   }
 ]);

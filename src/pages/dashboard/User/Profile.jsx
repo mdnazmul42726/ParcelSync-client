@@ -11,7 +11,7 @@ const Profile = () => {
     const { user } = useContext(AuthContext);
     const [hideForm, setHideForm] = useState(false)
 
-    const { data = [] } = useQuery({
+    const { data = [], refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
             const response = await axios.get(`http://localhost:5000/user/v1?email=${user.email}`);
@@ -37,7 +37,8 @@ const Profile = () => {
                     title: 'Profile Info Updated',
                     icon: 'success'
                 });
-                setHideForm(!hideForm)
+                setHideForm(!hideForm);
+                refetch()
             } else if (res.data.matchedCount > 0 && res.data.modifiedCount == 0) {
                 Swal.fire({
                     icon: 'info',
@@ -47,7 +48,9 @@ const Profile = () => {
                 setHideForm(!hideForm)
             }
 
-        }).catch(err => console.log(err))
+        }).catch(err => console.log(err));
+
+        updateProfile(auth.currentUser, { displayName: name });
     }
 
     async function handleProfilePictureUpdate(event) {
@@ -71,20 +74,20 @@ const Profile = () => {
     }
 
     return (
-        <div className="bg-gray-100">
+        <div className="">
             <Toaster />
             <div>
                 <div className="">
                     <div className="container mx-auto my-5 p-5">
                         <div className="md:flex no-wrap md:-mx-2 ">
-                            <div className="w-full md:w-3/12 md:mx-2">
+                            <div className="w-full md:w-3/12 md:mx-2 shadow-sm">
                                 <div className="bg-white p-3 border-t-4 border-green-400">
                                     <div className="image overflow-hidden rounded-md">
                                         <img src={user.photoURL} alt="" />
                                     </div>
                                     <form className="mt-3 flex" onSubmit={handleProfilePictureUpdate}>
                                         <input type="file" name="image" className="" required />
-                                        <input type="submit" required value="Upload" className=" text-white px-2 cursor-pointer rounded-sm bg-sky-600 hover:bg-sky-700" />
+                                        <input type="submit" required value="Update" className=" text-white px-2 cursor-pointer rounded-sm bg-sky-600 hover:bg-sky-700" />
                                     </form>
                                     <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{data.name}</h1>
                                     <h3 className="text-gray-600 font-lg text-semibold leading-6">{data.accType} ID: {data?._id?.slice(0, 9)}</h3>
@@ -133,7 +136,7 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                             <button onClick={() => setHideForm(!hideForm)}
-                                                className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4" >Edit Info</button>
+                                                className="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-200 bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4" >Edit Info</button>
                                         </div>
                                     </div>
 

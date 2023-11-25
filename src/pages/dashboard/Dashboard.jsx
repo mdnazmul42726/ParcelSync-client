@@ -38,19 +38,19 @@ const Dashboard = () => {
                 </a></NavLink>
             </li>
             <li>
-                <NavLink  className={({ isActive }) => isActive? 'text-red-600 font-bold' : ''} to={'/dashboard/book-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink className={({ isActive }) => isActive ? 'text-red-600 font-bold' : ''} to={'/dashboard/book-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <MdBookmarkAdd className="text-2xl" />
                     <span>Book Parcel</span>
                 </a></NavLink>
             </li>
             <li>
-                <NavLink  className={({ isActive }) => isActive? 'text-red-600 font-bold' : ''} to={'/dashboard/my-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink className={({ isActive }) => isActive ? 'text-red-600 font-bold' : ''} to={'/dashboard/my-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <MdBookmarkAdded className="text-2xl" />
                     <span>My Parcels</span>
                 </a></NavLink>
             </li>
             <li>
-                <NavLink  className={({ isActive }) => isActive? 'text-red-600 font-bold' : ''} to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink className={({ isActive }) => isActive ? 'text-red-600 font-bold' : ''} to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
                     <RxAvatar className="text-2xl" />
                     <span>My Profile</span>
                 </a></NavLink>
@@ -102,7 +102,7 @@ const Dashboard = () => {
             <li>
                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                     <IoBookmarksSharp className="text-xl" />
-                    <span>All Parcel</span>
+                    <NavLink to={'/dashboard/all-parcel'}><span>All Parcel</span></NavLink>
                 </a>
             </li>
             <li>
@@ -123,12 +123,10 @@ const Dashboard = () => {
                     <span>Statistics</span>
                 </a>
             </li>
-            <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                    <RxAvatar className="text-xl" />
-                    <span>My Profile</span>
-                </a>
-            </li>
+            <NavLink className={({ isActive }) => isActive ? 'text-red-600 font-bold' : ''} to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
+                <RxAvatar className="text-2xl" />
+                <span>My Profile</span>
+            </a></NavLink>
         </ul>
     </>
 
@@ -170,7 +168,7 @@ const Dashboard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="p-10 flex-1">
+                <div className="p-10 flex-1 bg-[#FEFEFD]">
                     <Outlet />
                 </div>
             </div>
