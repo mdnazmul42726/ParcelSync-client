@@ -64,7 +64,7 @@ const Profile = () => {
             updateProfile(auth.currentUser, { photoURL: response.data.data.display_url }).then(() => {
                 toast.success('Profile Picture Updated', { id: toastID });
                 window.location.reload();
-                
+
             }).catch(err => console.log(err))
 
         }
@@ -83,7 +83,7 @@ const Profile = () => {
                                         <img src={user.photoURL} alt="" />
                                     </div>
                                     <form className="mt-3 flex" onSubmit={handleProfilePictureUpdate}>
-                                        <input type="file" name="image" className="" />
+                                        <input type="file" name="image" className="" required />
                                         <input type="submit" required value="Upload" className=" text-white px-2 cursor-pointer rounded-sm bg-sky-600 hover:bg-sky-700" />
                                     </form>
                                     <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{data.name}</h1>

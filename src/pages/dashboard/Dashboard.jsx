@@ -27,8 +27,6 @@ const Dashboard = () => {
         }
     });
 
-    console.log(data)
-
     const userLinks = <>
         <ul className="pt-2 pb-4 space-y-1 text-sm">
             <li className="">
@@ -40,19 +38,19 @@ const Dashboard = () => {
                 </a></NavLink>
             </li>
             <li>
-                <NavLink to={'/dashboard/book-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink  className={({ isActive }) => isActive? 'text-red-600 font-bold' : ''} to={'/dashboard/book-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <MdBookmarkAdd className="text-2xl" />
                     <span>Book Parcel</span>
                 </a></NavLink>
             </li>
             <li>
-                <NavLink to={'/dashboard/my-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink  className={({ isActive }) => isActive? 'text-red-600 font-bold' : ''} to={'/dashboard/my-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <MdBookmarkAdded className="text-2xl" />
                     <span>My Parcels</span>
                 </a></NavLink>
             </li>
             <li>
-                <NavLink to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink  className={({ isActive }) => isActive? 'text-red-600 font-bold' : ''} to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
                     <RxAvatar className="text-2xl" />
                     <span>My Profile</span>
                 </a></NavLink>

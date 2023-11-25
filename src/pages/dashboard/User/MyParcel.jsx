@@ -1,18 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../../AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import noData from '../../../assets/BkQxD7wtnZ.gif';
 
 const MyParcel = () => {
     const { user } = useContext(AuthContext);
+    const [item, setItem] = useState([]);
+    const [status, setStatus] = useState('')
 
-    const { data = [], refetch } = useQuery({
+    const { refetch } = useQuery({
         queryKey: ['booked parcel data'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}`);
-            return response.data;
+            const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}&status=${status}`);
+            return setItem(response.data)
         }
     });
 
@@ -27,7 +30,6 @@ const MyParcel = () => {
             confirmButtonText: "Yes, Cancel it!"
         }).then((result) => {
             if (result.isConfirmed) {
-
 
                 axios.patch(`http://localhost:5000/book/update/v1/${_id}`).then(res => {
 
@@ -45,9 +47,23 @@ const MyParcel = () => {
         });
     }
 
+    async function handleFilter(status) {
+        const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}&status=${status}`);
+        setItem(response.data)
+    }
+
     return (
         <div className="">
-            {data.map(book => <div key={book._id} className="shadow-md mb-7 mt-4 ">
+            <form className="my-6">
+                <select name="status" id="" className="py-2 px-4 rounded-sm bg-slate-100" onChange={(event) => handleFilter(event.target.value)}>
+                    <option value="" disabled selected> Filter</option>
+                    <option value="Pending">Pending</option>
+                    <option value="On The Way">On The Way</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </form>
+            {item.length < 1 ? <div className="flex justify-center items-center mt-20"><img className="w-[20%]" src={noData} alt="" /></div> : item?.map(book => <div key={book._id} className="shadow-md mb-7 mt-4 ">
                 <div className="relative overflow-x-auto">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
