@@ -50,7 +50,7 @@ const Register = () => {
             signUpUserWithEmailAndPassword(email, password).then(() => {
                 updateProfile(auth.currentUser, { displayName: name, photoURL: response.data.data.display_url });
 
-                const userinfo = { name, email, accType, ID: deliveryManID, spent: 0 };
+                const userinfo = { name, email, accType, ID: deliveryManID};
                 toast.success('Account created.', { id: toastID })
                 axios.post('http://localhost:5000/users/v1', userinfo).then(res => {
                     console.log(res.data);

@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
 
 const BookParcel = () => {
     const { user } = useContext(AuthContext);
@@ -36,7 +35,7 @@ const BookParcel = () => {
         const deliveryAddressLatitude = form.deliveryAddressLatitude.value;
         const deliveryAddressLongitude = form.deliveryAddressLongitude.value;
 
-        const bookData = { senderEmail, senderName, senderPhoneNumber, parcelType, parcelWeight, RequestedDeliveryDate, receiverEmail, receiverName, ReceiverPhoneNumber, deliveryAddress, deliveryAddressLatitude, deliveryAddressLongitude, price, bookingDate, status: 'pending' };
+        const bookData = { senderEmail, senderName, senderPhoneNumber, parcelType, parcelWeight, RequestedDeliveryDate, receiverEmail, receiverName, ReceiverPhoneNumber, deliveryAddress, deliveryAddressLatitude, deliveryAddressLongitude, price, bookingDate, status: 'Pending' };
 
         axios.post('http://localhost:5000/book/v1', bookData).then(res => {
 
@@ -46,11 +45,10 @@ const BookParcel = () => {
                     text: 'We have successfully received your booking',
                     icon: 'success'
                 });
-                refetch()
+                form.reset();
             }
         }).catch(err => console.log(err));
     }
-
 
     return (
         <div>

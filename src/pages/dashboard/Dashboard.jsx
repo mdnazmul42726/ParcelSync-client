@@ -46,10 +46,10 @@ const Dashboard = () => {
                 </a></NavLink>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard/my-parcel'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <MdBookmarkAdded className="text-2xl" />
                     <span>My Parcels</span>
-                </a>
+                </a></NavLink>
             </li>
             <li>
                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
