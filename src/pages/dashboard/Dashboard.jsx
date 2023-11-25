@@ -52,10 +52,10 @@ const Dashboard = () => {
                 </a></NavLink>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
                     <RxAvatar className="text-2xl" />
                     <span>My Profile</span>
-                </a>
+                </a></NavLink>
             </li>
         </ul>
     </>

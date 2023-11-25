@@ -1,15 +1,14 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider';
 import { useContext, useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const UpdateBook = () => {
     const bookItem = useLoaderData();
-    console.log(bookItem);
-
     const { user } = useContext(AuthContext);
-
     const [price, setPrice] = useState(bookItem.price);
-    const bookingDate = new Date().toLocaleDateString();
+    const navigate = useNavigate();
 
     function handleCalculatePrice(kg) {
         if (kg < 2) {
@@ -21,7 +20,7 @@ const UpdateBook = () => {
         }
     }
 
-    function handleBooking(event) {
+    function handleUpdate(event) {
         event.preventDefault();
         const form = event.target;
         const senderName = form.senderName.value;
@@ -37,7 +36,28 @@ const UpdateBook = () => {
         const deliveryAddressLatitude = form.deliveryAddressLatitude.value;
         const deliveryAddressLongitude = form.deliveryAddressLongitude.value;
 
-        const bookData = { senderEmail, senderName, senderPhoneNumber, parcelType, parcelWeight, RequestedDeliveryDate, receiverEmail, receiverName, ReceiverPhoneNumber, deliveryAddress, deliveryAddressLatitude, deliveryAddressLongitude, price, bookingDate, status: 'Pending' };
+        const updatedData = { senderEmail, senderName, senderPhoneNumber, parcelType, parcelWeight, RequestedDeliveryDate, receiverEmail, receiverName, ReceiverPhoneNumber, deliveryAddress, deliveryAddressLatitude, deliveryAddressLongitude, price };
+
+        axios.patch(`http://localhost:5000/book/item/update?id=${bookItem._id}`, updatedData).then(res => {
+
+            // if(res.data.)
+            console.log(res.data);
+            if (res.data.modifiedCount > 0) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Updated',
+                    text: 'Data updated successfully'
+                })
+                navigate('/dashboard/my-parcel')
+
+            } else if (res.data.matchedCount > 0 && res.data.modifiedCount == 0) {
+                Swal.fire({
+                    icon: 'info',
+                    title: "You haven't changed anything",
+                    text: 'To update the booking data you need to change any one of the fields'
+                })
+            }
+        }).catch(err => console.log(err));
 
     }
 
@@ -45,7 +65,7 @@ const UpdateBook = () => {
         <div>
             <div>
                 <section className="p-6">
-                    <form className="container flex flex-col mx-auto space-y-12" onSubmit={handleBooking}>
+                    <form className="container flex flex-col mx-auto space-y-12" onSubmit={handleUpdate}>
                         <fieldset className="shadow-sm p-4">
                             <p className="text-xl font-semibold mb-10">Sender Information</p>
                             <div className="grid grid-cols-3 gap-4">
