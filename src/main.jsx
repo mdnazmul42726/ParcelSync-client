@@ -22,6 +22,7 @@ import AllDeliveryMan from "./pages/dashboard/Admin/AllDeliveryMan";
 import AllUser from "./pages/dashboard/Admin/AllUser";
 import DeliveryManRoute from "./conditionalRoutes/DeliveryManRoute";
 import MyDeliveryList from "./pages/dashboard/Delivery_Man/MyDeliveryList";
+import Review from "./pages/dashboard/Delivery_Man/Review";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,8 @@ const router = createBrowserRouter([
       { path: '/dashboard/users', element: <AdminRoute><AllUser /></AdminRoute> },
 
       // Delivery man routes
-      { path: '/dashboard/my-delivery-list', element: <DeliveryManRoute><MyDeliveryList /></DeliveryManRoute> }
+      { path: '/dashboard/my-delivery-list', element: <DeliveryManRoute><MyDeliveryList /></DeliveryManRoute> },
+      { path: '/dashboard/reviews', element: <DeliveryManRoute><Review /></DeliveryManRoute> }
     ]
   }
 ]);

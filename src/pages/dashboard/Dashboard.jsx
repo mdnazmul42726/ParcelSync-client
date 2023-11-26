@@ -75,10 +75,10 @@ const Dashboard = () => {
                 </a></NavLink>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard/reviews'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <MdOutlineReviews className="text-2xl" />
                     <span>My Reviews</span>
-                </a>
+                </a></NavLink>
             </li>
             <li>
                 <NavLink to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
