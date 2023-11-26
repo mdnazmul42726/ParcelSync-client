@@ -5,7 +5,7 @@ import axios from "axios";
 import Loader from "../components/Loader";
 import { Navigate } from "react-router-dom";
 
-const AdminRoute = ({ children }) => {
+const DeliveryManRoute = ({ children }) => {
     const { user, isLoading } = useContext(AuthContext);
     const { data = [], isPending } = useQuery({
         queryKey: ['user'],
@@ -23,7 +23,7 @@ const AdminRoute = ({ children }) => {
         return <Loader />
     }
 
-    if (!isLoading && user && data.accType == 'Admin') {
+    if (!isLoading && user && data.accType == 'Delivery Man') {
         return children
     }
 
@@ -31,4 +31,4 @@ const AdminRoute = ({ children }) => {
 
 };
 
-export default AdminRoute;
+export default DeliveryManRoute;

@@ -69,10 +69,10 @@ const Dashboard = () => {
                 </a>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard/my-delivery-list'}> <a className="flex items-center p-2 space-x-3 rounded-md">
                     <TbTruckDelivery className="text-2xl" />
                     <span>My Delivery List</span>
-                </a>
+                </a></NavLink>
             </li>
             <li>
                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
@@ -81,10 +81,10 @@ const Dashboard = () => {
                 </a>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard/profile'}><a className="flex items-center p-2 space-x-3 rounded-md">
                     <RxAvatar className="text-2xl" />
                     <span>My Profile</span>
-                </a>
+                </a></NavLink>
             </li>
         </ul>
     </>
