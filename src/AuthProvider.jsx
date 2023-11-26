@@ -33,8 +33,6 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, githubProvider)
     }
 
-
-
     // Get the currently signed-in user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {

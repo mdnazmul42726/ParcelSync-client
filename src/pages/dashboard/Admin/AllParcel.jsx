@@ -7,7 +7,7 @@ const AllParcel = () => {
     const { data = [], refetch } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/books/v1');
+            const response = await axios.get('http://localhost:5000/books/v2');
             return response.data;
         }
     });
@@ -87,7 +87,7 @@ const AllParcel = () => {
 
                     <div className="flex justify-end mr-10 p-3">
                         {book.status == 'Cancelled' ? <button className="text-red-600 font-semibold hover:underline" onClick={() => handleDeleteCancelledBook(book._id)}>Delete</button> :
-                            <button className="text-blue-600 font-semibold hover:underline">Manage</button>}
+                            <button className={book.status == 'Delivered' ? 'btn-disabled text-slate-300' : 'text-blue-600'}><span className=" font-semibold hover:underline">Manage</span></button>}
                     </div>
                 </div>
             </div>)}

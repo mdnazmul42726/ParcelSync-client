@@ -102,7 +102,7 @@ const Dashboard = () => {
             <li>
                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                     <IoBookmarksSharp className="text-xl" />
-                    <NavLink to={'/dashboard/all-parcel'}><span>All Parcel</span></NavLink>
+                    <NavLink to={'/dashboard/all-parcels'}><span>All Parcels</span></NavLink>
                 </a>
             </li>
             <li>
@@ -114,7 +114,7 @@ const Dashboard = () => {
             <li>
                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                     <SiPostman className="text-xl" />
-                    <span>All Delivery Man</span>
+                    <NavLink to={'/dashboard/all-deliveryman'}><span>All Delivery Mans</span></NavLink>
                 </a>
             </li>
             <li>

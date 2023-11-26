@@ -11,11 +11,14 @@ import Register from "./pages/Register";
 import AuthProvider from "./AuthProvider";
 import Dashboard from "./pages/dashboard/Dashboard";
 import BookParcel from "./pages/dashboard/User/BookParcel";
-import UserRoute from "./conditionalRoutes/UserRoute";
 import MyParcel from "./pages/dashboard/User/MyParcel";
 import UpdateBook from "./pages/dashboard/User/UpdateBook";
 import Profile from "./pages/dashboard/User/Profile";
 import AllParcel from "./pages/dashboard/Admin/AllParcel";
+import CustomerRoute from "./conditionalRoutes/CustomerRoute";
+import UserRoute from "./conditionalRoutes/UserRoute";
+import AdminRoute from "./conditionalRoutes/AdminRoute";
+import AllDeliveryMan from "./pages/dashboard/Admin/AllDeliveryMan";
 
 const router = createBrowserRouter([
   {
@@ -27,18 +30,21 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: '/dashboard', element: <UserRoute> <Dashboard /></UserRoute>,
+    path: '/dashboard', element: <UserRoute><Dashboard /></UserRoute>,
     children: [
       { index: true, element: <div>Hello Home</div> },
 
       // Customer routes
-      { path: '/dashboard/book-parcel', element: <UserRoute><BookParcel /></UserRoute> },
-      { path: '/dashboard/my-parcel', element: <UserRoute><MyParcel /></UserRoute> },
-      { path: '/dashboard/edit/:id', element: <UserRoute><UpdateBook /></UserRoute>, loader: ({ params }) => fetch(`http://localhost:5000/book/edit/${params.id}`) },
+      { path: '/dashboard/book-parcel', element: <CustomerRoute><BookParcel /></CustomerRoute> },
+      { path: '/dashboard/my-parcel', element: <CustomerRoute><MyParcel /></CustomerRoute> },
+      { path: '/dashboard/edit/:id', element: <CustomerRoute><UpdateBook /></CustomerRoute>, loader: ({ params }) => fetch(`http://localhost:5000/book/edit/${params.id}`) },
+
+      // all type of logged in user
       { path: '/dashboard/profile', element: <UserRoute><Profile /></UserRoute> },
 
       // Admin routes
-      { path: '/dashboard/all-parcel', element: <AllParcel /> }
+      { path: '/dashboard/all-parcels', element: <AdminRoute><AllParcel /></AdminRoute> },
+      { path: '/dashboard/all-deliveryman', element: <AdminRoute><AllDeliveryMan /></AdminRoute> }
     ]
   }
 ]);
