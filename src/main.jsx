@@ -19,6 +19,7 @@ import CustomerRoute from "./conditionalRoutes/CustomerRoute";
 import UserRoute from "./conditionalRoutes/UserRoute";
 import AdminRoute from "./conditionalRoutes/AdminRoute";
 import AllDeliveryMan from "./pages/dashboard/Admin/AllDeliveryMan";
+import AllUser from "./pages/dashboard/Admin/AllUser";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,8 @@ const router = createBrowserRouter([
 
       // Admin routes
       { path: '/dashboard/all-parcels', element: <AdminRoute><AllParcel /></AdminRoute> },
-      { path: '/dashboard/all-deliveryman', element: <AdminRoute><AllDeliveryMan /></AdminRoute> }
+      { path: '/dashboard/all-deliveryman', element: <AdminRoute><AllDeliveryMan /></AdminRoute> },
+      { path: '/dashboard/users', element: <AdminRoute><AllUser /></AdminRoute> }
     ]
   }
 ]);

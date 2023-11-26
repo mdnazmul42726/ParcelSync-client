@@ -100,22 +100,25 @@ const Dashboard = () => {
                 </a>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                    <IoBookmarksSharp className="text-xl" />
-                    <NavLink to={'/dashboard/all-parcels'}><span>All Parcels</span></NavLink>
-                </a>
+                <NavLink to={'/dashboard/all-parcels'}>
+                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                        <IoBookmarksSharp className="text-xl" />
+                        <span>All Parcels</span>
+                    </a>
+                </NavLink>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                <NavLink to={'/dashboard/users'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                     <FaUsers className="text-xl" />
                     <span>All Users</span>
-                </a>
+                </a></NavLink>
             </li>
             <li>
-                <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                    <SiPostman className="text-xl" />
-                    <NavLink to={'/dashboard/all-deliveryman'}><span>All Delivery Mans</span></NavLink>
-                </a>
+                <NavLink to={'/dashboard/all-deliveryman'}>
+                    <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                        <SiPostman className="text-xl" />
+                        <span>All Delivery Mans</span>
+                    </a></NavLink>
             </li>
             <li>
                 <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">

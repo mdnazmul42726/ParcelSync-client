@@ -40,8 +40,9 @@ const AllParcel = () => {
     }
 
     return (
+
         <div className="">
-            {data.map(book => <div key={book._id}>
+            {data?.map(book => <div key={book._id}>
                 <div className="shadow-md mb-7 mt-4 ">
                     <div className="relative overflow-x-auto">
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500">
