@@ -171,7 +171,7 @@ const Dashboard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="p-10 flex-1 bg-[#FEFEFD]">
+                <div className="p-10 flex-1 bg-[##FDF4E7]">
                     <Outlet />
                 </div>
             </div>

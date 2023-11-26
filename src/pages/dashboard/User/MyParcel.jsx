@@ -5,10 +5,13 @@ import { AuthContext } from "../../../AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import noData from '../../../assets/BkQxD7wtnZ.gif';
+import toast, { Toaster } from "react-hot-toast";
 
 const MyParcel = () => {
     const { user } = useContext(AuthContext);
     const [item, setItem] = useState([]);
+    const [showReviewForm, setShowReviewForm] = useState(false);
+    const [deliverManEmail, setDeliverManEmail] = useState('');
 
     const { refetch } = useQuery({
         queryKey: ['booked parcel data'],
@@ -49,6 +52,85 @@ const MyParcel = () => {
     async function handleFilter(status) {
         const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}&status=${status}`);
         setItem(response.data)
+    }
+
+    function handleFeedbackFormState(deliveryMan) {
+        setDeliverManEmail(deliveryMan)
+        setShowReviewForm(true)
+
+    }
+
+    function handleReviewFormSubmit(event) {
+        event.preventDefault();
+        const customerName = event.target.customerName.value;
+        const customerPicture = event.target.customerPicture.value;
+        const deliverManEmail = event.target.deliverManEmail.value;
+        const ratingString = event.target.rating.value;
+        const rating = parseFloat(ratingString)
+        const feedBack = event.target.feedBack.value;
+
+        const data = { customerName, customerPicture, deliverManEmail, rating, feedBack }
+
+        if (rating > 5) {
+            toast.error('You cannot give rating above 5.00');
+            return
+        }
+
+        axios.post('http://localhost:5000/review/v1', data).then(res => {
+
+            if (res.data.insertedId) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thanks for your Feedback'
+                });
+                setShowReviewForm(false)
+            }
+
+        }).catch(err => console.log(err))
+    }
+
+    if (showReviewForm) {
+        return (
+
+            <section className="p-6">
+                <Toaster />
+                <form className="container flex flex-col mx-auto space-y-12" onSubmit={handleReviewFormSubmit}>
+                    <fieldset className="shadow-sm p-4">
+                        <div className="grid grid-cols-4 gap-4">
+                            <div className="">
+                                <label htmlFor="Name" className="text-sm">Customer Name<span className="text-red-600">*</span></label>
+                                <input id="Name" type="text" name="customerName" defaultValue={user.displayName} className="w-full rounded-md px-3 py-2 border" required readOnly />
+                            </div>
+                            <div className="">
+                                <label htmlFor="email" className="text-sm">Customer Picture<span className="text-red-600">*</span></label>
+                                <input id="email" type="text" name="customerPicture" defaultValue={user.photoURL} className="w-full rounded-md px-3 py-2 border" required readOnly />
+                            </div>
+                            <div className="">
+                                <label htmlFor="ParcelType" className="text-sm">Delivery Men`s Email<span className="text-red-600">*</span></label>
+                                <input id="ParcelType" type="text" name="deliverManEmail" placeholder="Enter Your Parcel Type" className="w-full rounded-md px-3 py-2 border" required readOnly defaultValue={deliverManEmail} />
+                            </div>
+                            <div className="">
+                                <label htmlFor="number" className="text-sm">Rating <span className="text-red-600">*</span></label>
+                                <input id="number" type="number" name="rating" placeholder="Enter Your Rating out of 5.00" className="w-full rounded-md px-3 py-2 border" required />
+                            </div>
+                        </div>
+                        <div className="mt-5">
+
+                            <div className="">
+                                <label htmlFor="parcelWeight" className="text-sm">Feedback<span className="text-red-600">*</span></label>
+                                <textarea name="feedBack" id="" cols="30" required rows="10" placeholder="Type Your Feedback Here" className="w-full rounded-md px-3 py-2 border">
+                                </textarea>
+                            </div>
+
+                        </div>
+                        <div className="flex space-x-2">
+                            <button className="py-2 rounded-sm px-4 bg-sky-600 hover:bg-sky-700 text-white">Submit</button>
+                            <span onClick={() => setShowReviewForm(!showReviewForm)} className="py-2 cursor-pointer rounded-sm px-4 bg-red-500 hover:bg-red-600 text-white">Cancel</span>
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+        )
     }
 
     return (
@@ -108,7 +190,7 @@ const MyParcel = () => {
                     </table>
                 </div>
                 <div className="flex justify-end mr-10 p-3">
-                    {book.status == 'Delivered' ? <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Review</a>
+                    {book.status == 'Delivered' ? <a className="font-medium text-blue-600 cursor-pointer dark:text-blue-500 hover:underline" onClick={() => handleFeedbackFormState(book.deliveryMan)}>Review</a>
                         : <> <Link to={`/dashboard/edit/${book._id}`}><button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-blue-600'}><a className="font-medium hover:underline">Edit</a></button></Link>
                             <button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-red-600'}> <a className="font-medium hover:underline ms-3" onClick={() => handleCancelBook(book._id)}>Cancel</a> </button> </>}
                 </div>

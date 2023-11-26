@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IoLocationSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
+import noData from '../../../assets/BkQxD7wtnZ.gif';
 
 const MyDeliveryList = () => {
     const { user } = useContext(AuthContext);
@@ -15,6 +16,12 @@ const MyDeliveryList = () => {
             return response.data
         }
     });
+
+    if (!data.length) {
+        return <div className="flex justify-center items-center mt-20">
+            <img className="w-[20%]" src={noData} alt="" />
+        </div>
+    }
 
     function handleChangeStatus(_id, status) {
 
@@ -44,6 +51,8 @@ const MyDeliveryList = () => {
             }
         });
     }
+
+
 
     return (
         <div>
