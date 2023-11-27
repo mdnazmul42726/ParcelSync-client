@@ -166,7 +166,7 @@ const Dashboard = () => {
     </>
 
     return (
-        <div>
+        <div data-aos="fade-left">
             <NavbarComponent />
             <div className="flex border">
                 <div className="h-full p-3 space-y-2 w-72 min-h-screen border">

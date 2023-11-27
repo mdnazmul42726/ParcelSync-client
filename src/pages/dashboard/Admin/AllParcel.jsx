@@ -88,9 +88,9 @@ const AllParcel = () => {
 
     return (
 
-        <div className="">
+        <div className="" data-aos="fade-left">
             {openModal ? <>
-                <div className="flex justify-center items-center mt-40">
+                <div className="flex justify-center items-center mt-40" data-aos="zoom-out">
                     <form className="w-full max-w-lg" onSubmit={handleParcelAssign}>
                         <div className="flex flex-wrap -mx-3 mb-6">
                             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

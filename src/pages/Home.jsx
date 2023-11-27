@@ -24,11 +24,11 @@ const Home = () => {
     });
 
     return (
-        <div>
+        <div className='overflow-hidden'>
             {/* banner section */}
             <section>
                 <div className="grid max-w-screen-xl px-4 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-                    <div className="mr-auto place-self-center lg:col-span-7">
+                    <div className="mr-auto place-self-center lg:col-span-7"  data-aos="fade-right">
                         <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">Unleash the Power of Effortless <span className='text-red-500'>Deliveries</span></h1>
                         <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">Elevate your shipping experience with ParcelSync. Simplify parcel management, enjoy real-time tracking, and ensure swift, reliable deliveries. Your logistics, reimagined.</p>
                         <form>
@@ -45,7 +45,7 @@ const Home = () => {
             </section>
 
             {/* features */}
-            <section className="bg-white mt-20">
+            <section className="bg-white mt-20"  data-aos="fade-up">
                 <div className="container px-6 py-10 mx-auto">
                     <h1 className="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-6xl ">Our Features</h1>
                     <p className='text-center mt-2'>Elevate your shipping experience with ParcelSync</p>
@@ -105,7 +105,7 @@ const Home = () => {
             </section>
 
             {/* statistics section */}
-            <section className='px-3 md:px-0 mt-40'>
+            <section className='px-3 md:px-0 mt-40'  data-aos="fade-up">
 
                 <h1 className="xl:text-5xl md:text-4xl text-2xl font-semibold leading-tight text-center text-gray-800 sm:mb-0 mb-12">
                     More Than 10 Years We Provide <br className="md:block hidden" />
@@ -133,7 +133,7 @@ const Home = () => {
             </section>
 
             {/* the top delivery man */}
-            <section className='my-40 mx-10'>
+            <section className='my-40 mx-10' data-aos="zoom-out">
                 <h1 className='text-5xl text-center font-semibold mb-2 mt-16'>The Top Delivery Man</h1>
                 <p className='text-center mb-10'>All of our deliveries are qualified to deliver to you efficiently. <br /> Here only the data of the five delivery men who made the highest deliveries is shown</p>
                 <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">

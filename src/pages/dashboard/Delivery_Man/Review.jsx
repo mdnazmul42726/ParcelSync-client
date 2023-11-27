@@ -43,7 +43,7 @@ const Review = () => {
                 </Card>
             </div>)} */}
 
-            {data.map(review => <div key={review._id} className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md border">
+            {data.map(review => <div key={review._id} className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md border" data-aos="fade-left">
                 <div className="flex justify-between p-4">
                     <div className="flex space-x-4 space-y-4">
                         <div>

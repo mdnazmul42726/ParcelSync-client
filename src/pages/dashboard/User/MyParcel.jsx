@@ -96,7 +96,7 @@ const MyParcel = () => {
     if (showReviewForm) {
         return (
 
-            <section className="p-6">
+            <section className="p-6" data-aos="zoom-out">
                 <Toaster />
                 <form className="container flex flex-col mx-auto space-y-12" onSubmit={handleReviewFormSubmit}>
                     <fieldset className="shadow-sm p-4">
@@ -138,7 +138,7 @@ const MyParcel = () => {
     }
 
     return (
-        <div className="">
+        <div className="" data-aos="fade-left">
             <form className="my-6">
                 <select name="status" id="" className="py-2 px-4 rounded-sm bg-slate-100" onChange={(event) => handleFilter(event.target.value)}>
                     <option value="" disabled selected> Filter</option>

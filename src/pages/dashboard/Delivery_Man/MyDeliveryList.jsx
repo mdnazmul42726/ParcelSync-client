@@ -54,10 +54,8 @@ const MyDeliveryList = () => {
         });
     }
 
-
-
     return (
-        <div>
+        <div data-aos="fade-left">
             <div className="">
                 {data.map(book => <div key={book._id}>
                     <div className="shadow-md mb-7 mt-4 ">

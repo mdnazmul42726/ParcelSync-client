@@ -51,7 +51,7 @@ const BookParcel = () => {
     }
 
     return (
-        <div>
+        <div data-aos="fade-left">
             <section className="p-6">
                 <form className="container flex flex-col mx-auto space-y-12" onSubmit={handleBooking}>
                     <fieldset className="shadow-sm p-4">

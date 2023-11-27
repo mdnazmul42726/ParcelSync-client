@@ -77,7 +77,7 @@ const Profile = () => {
     return (
         <div className="">
             <Toaster />
-            <div>
+            <div data-aos="fade-left">
                 <div className="">
                     <div className="container mx-auto my-5 p-5">
                         <div className="md:flex no-wrap md:-mx-2 ">
@@ -142,7 +142,7 @@ const Profile = () => {
                                     </div>
 
                                     {/* update form */}
-                                    <div className="flex justify-center mt-4">
+                                    <div className="flex justify-center mt-4" >
                                         <div className={!hideForm && 'hidden'}>
                                             <form className="w-full max-w-lg" onSubmit={handleProfileInfoUpdate}>
                                                 <div className="flex flex-wrap -mx-3 mb-6">

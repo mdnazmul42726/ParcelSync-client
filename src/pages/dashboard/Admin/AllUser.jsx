@@ -49,7 +49,7 @@ const AllUser = () => {
     }
 
     return (
-        <div>
+        <div data-aos="fade-left">
             <div>
                 <div className="relative overflow-x-auto">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500">
