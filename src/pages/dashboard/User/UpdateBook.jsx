@@ -5,6 +5,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const UpdateBook = () => {
+    document.title = 'ParcelSync | Update Book'
     const bookItem = useLoaderData();
     const { user } = useContext(AuthContext);
     const [price, setPrice] = useState(bookItem.price);

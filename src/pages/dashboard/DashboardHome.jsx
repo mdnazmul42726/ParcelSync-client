@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { BarChart } from "keep-react";
 
 const DashboardHome = () => {
-
+    document.title = 'ParcelSync | Dashboard '
     const { user } = useContext(AuthContext)
 
     const { data = [] } = useQuery({

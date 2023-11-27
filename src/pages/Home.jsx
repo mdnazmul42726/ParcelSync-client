@@ -12,6 +12,7 @@ import axios from 'axios';
 
 
 const Home = () => {
+    document.title = 'ParcelSync | Home'
     const [counterOn, setCOunterOn] = useState(false);
 
     const { data = [] } = useQuery({
@@ -21,8 +22,6 @@ const Home = () => {
             return response.data
         }
     });
-
-    console.log(data);
 
     return (
         <div>

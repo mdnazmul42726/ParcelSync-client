@@ -9,7 +9,7 @@ import { MdOutlineReviews } from "react-icons/md";
 import { IoBookmarksSharp } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { SiPostman } from "react-icons/si";
-import { CgRowFirst } from "react-icons/cg";
+// import { CgRowFirst } from "react-icons/cg";
 import Footer from "../../components/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider";
@@ -20,6 +20,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 
 const Dashboard = () => {
+    document.title = 'ParcelSync | Dashboard'
     const { user } = useContext(AuthContext)
 
     const { data = [] } = useQuery({

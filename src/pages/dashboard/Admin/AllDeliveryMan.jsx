@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const AllDeliveryMan = () => {
+    document.title = 'ParcelSync | All Delivery Man'
 
     const { data = [] } = useQuery({
         queryKey: ['delivery man'],

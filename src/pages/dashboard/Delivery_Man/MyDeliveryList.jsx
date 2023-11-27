@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import noData from '../../../assets/BkQxD7wtnZ.gif';
 
 const MyDeliveryList = () => {
+    document.title = 'ParcelSync | My Delivery List'
     const { user } = useContext(AuthContext);
     const token = { authorization: `${localStorage.getItem('access-token')}` }
 

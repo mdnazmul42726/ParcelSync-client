@@ -6,6 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
 const Login = () => {
+    document.title = 'ParcelSync | Login'
     const { logInWithEmailAndPassword, signInWithGithub, signInWithGoogle } = useContext(AuthContext);
 
     // TODO: after login user navigate to hated route

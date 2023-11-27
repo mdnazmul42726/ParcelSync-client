@@ -8,6 +8,7 @@ import noData from '../../../assets/BkQxD7wtnZ.gif';
 import toast, { Toaster } from "react-hot-toast";
 
 const MyParcel = () => {
+    document.title = 'ParcelSync | My Parcel'
     const { user } = useContext(AuthContext);
     const [item, setItem] = useState([]);
     const [showReviewForm, setShowReviewForm] = useState(false);

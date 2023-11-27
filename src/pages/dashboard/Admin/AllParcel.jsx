@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 
 const AllParcel = () => {
+    document.title = 'ParcelSync | All Parcel'
     const [openModal, setOpenModal] = useState(false);
     const [parcelID, setParcelID] = useState('');
     const token = { authorization: `${localStorage.getItem('access-token')}` }

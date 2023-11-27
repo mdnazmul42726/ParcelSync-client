@@ -8,6 +8,7 @@ import { updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase.config";
 
 const Profile = () => {
+    document.title = 'ParcelSync | Profile'
     const { user } = useContext(AuthContext);
     const [hideForm, setHideForm] = useState(false)
 

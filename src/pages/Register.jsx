@@ -8,6 +8,7 @@ import { updateProfile } from 'firebase/auth';
 import { auth } from '../firebase.config';
 
 const Register = () => {
+    document.title = 'ParcelSync | Register'
     const { signUpUserWithEmailAndPassword, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const [deliveryManID, setDeliveryManID] = useState(null);
 

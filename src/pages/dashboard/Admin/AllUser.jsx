@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AllUser = () => {
-
+    document.title = 'ParcelSync | All Users'
     const { data = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {

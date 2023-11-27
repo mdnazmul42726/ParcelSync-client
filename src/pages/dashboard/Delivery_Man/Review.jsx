@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Avatar, Card } from "keep-react";
+// import { Avatar, Card } from "keep-react";
 import noData from '../../../assets/BkQxD7wtnZ.gif';
 
 const Review = () => {
+    document.title = 'ParcelSync | My Reviews'
     const { user } = useContext(AuthContext);
     const token = { authorization: `${localStorage.getItem('access-token')}` };
 
