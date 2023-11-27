@@ -4,11 +4,9 @@ import { Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../components/Loader";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase.config";
 
 const CustomerRoute = ({ children }) => {
-    const { user, isLoading } = useContext(AuthContext);
+    const { user, isLoading, logOut } = useContext(AuthContext);
     const { data = [], isPending } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
@@ -30,9 +28,10 @@ const CustomerRoute = ({ children }) => {
     }
 
     return (
-        signOut(auth).then(() => {
+        logOut().then(() => {
             <Navigate to={'/login'} />
-        }).catch(err => console.log(err))
+        })
+
     )
 };
 

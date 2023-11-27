@@ -52,7 +52,7 @@ const Home = () => {
                     <p className='text-center mt-2'>Elevate your shipping experience with ParcelSync</p>
 
                     <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
-                        <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl">
+                        <div className="flex hover:scale-105 transition-all hover:bg-slate-200 flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl">
                             <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full">
                                 <FaLocationCrosshairs className='text-2xl' />
                             </span>
@@ -69,7 +69,7 @@ const Home = () => {
                             </a>
                         </div>
 
-                        <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl">
+                        <div className="flex hover:scale-105 transition-all hover:bg-slate-200 flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl">
                             <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full ">
                                 <AiOutlineSafety className='text-2xl' />
                             </span>
@@ -86,7 +86,7 @@ const Home = () => {
                             </a>
                         </div>
 
-                        <div className="flex flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl">
+                        <div className="flex hover:scale-105 transition-all hover:bg-slate-200 flex-col items-center p-6 space-y-3 text-center bg-gray-100 rounded-xl">
                             <span className="inline-block p-3 text-blue-500 bg-blue-100 rounded-full">
                                 <CiDeliveryTruck className='text-2xl' />
                             </span>
@@ -118,15 +118,15 @@ const Home = () => {
                         <img src="https://i.ibb.co/SXKj9Mf/map-bg.png" alt="mobile-image" className="sm:hidden -mt-10 block w-full h-96  absolute z-0" />
 
                         <div className="shadow-lg xl:p-6 p-4 sm:w-auto w-full bg-white sm:absolute relative z-20 sm:mt-0 mt-4 left-0 xl:ml-56 sm:ml-12 xl:-mt-40 sm:-mt-12">
-                            <p className="text-3xl font-semibold text-gray-800"> {counterOn && <CountUp start={0} end={data?.totalBookedCount} duration={2} delay={1} />}</p>
+                            <p className="text-3xl font-semibold text-gray-800"> {counterOn && <CountUp start={0} end={data?.totalBookedCount + 30} duration={2} delay={1} />}</p>
                             <p className="text-base leading-4 xl:mt-4 mt-2 text-gray-600">Number of Parcel Booked</p>
                         </div>
                         <div className="shadow-lg xl:p-6 p-4 sm:w-auto w-full bg-white sm:absolute relative z-20 sm:mt-0 mt-4 xl:mt-80 xl:-ml-0 sm:-ml-12">
-                            <p className="text-3xl font-semibold text-gray-800">{counterOn && <CountUp start={0} end={data?.totalDelivered} duration={2} delay={1} />}</p>
+                            <p className="text-3xl font-semibold text-gray-800">{counterOn && <CountUp start={0} end={data?.totalDelivered + 30} duration={2} delay={1} />}</p>
                             <p className="text-base leading-4 xl:mt-4 mt-2 text-gray-600">Number of Parcel Delivered</p>
                         </div>
                         <div className="shadow-lg xl:p-6 p-4 sm:w-auto w-full bg-white sm:absolute relative z-20 md:mt-0 sm:-mt-5 mt-4 right-0 xl:mr-56 sm:mr-24">
-                            <p className="text-3xl font-semibold text-gray-800">{counterOn && <CountUp start={0} end={data?.totalUser} duration={2} delay={1} />}</p>
+                            <p className="text-3xl font-semibold text-gray-800">{counterOn && <CountUp start={0} end={data?.totalUser + 40} duration={2} delay={1} />}</p>
                             <p className="text-base leading-4 xl:mt-4 mt-2 text-gray-600">Number of Registered Users</p>
                         </div>
                     </div>
@@ -135,11 +135,12 @@ const Home = () => {
 
             {/* the top delivery man */}
             <section className='my-40 mx-10'>
-                <h1 className='text-5xl text-center font-semibold mb-10 mt-16'>The Top Delivery Man</h1>
-                <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
-                    <div className="">
+                <h1 className='text-5xl text-center font-semibold mb-2 mt-16'>The Top Delivery Man</h1>
+                <p className='text-center mb-10'>All of our deliveries are qualified to deliver to you efficiently. <br /> Here only the data of the five delivery men who made the highest deliveries is shown</p>
+                <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
+                    <div className="shadow-sm transition-all  hover:scale-105 cursor-pointer">
                         <Card
-                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSrc="https://i.ibb.co/D5DpFDF/pexels-pawel-kalisinski-1076758.jpg"
                             imgSize="md"
                             className="max-w-xs">
                             <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
@@ -147,31 +148,31 @@ const Home = () => {
                             </Card.Container>
                             <Card.Container className="flex flex-col items-center justify-center">
                                 <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
-                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/kQWrgmj/pexels-cottonbro-studio-9950569.jpg" />
                                 </Card.Container>
                                 <Card.Container className="mb-3 mt-10 text-center">
-                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Nazmul Hasan</Card.Title>
                                 </Card.Container>
                                 <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Delivered
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">11</Card.Title>
                                     </Card.Container>
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Ratings
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">5.00</Card.Title>
                                     </Card.Container>
                                 </Card.Container>
                             </Card.Container>
                         </Card>
                     </div>
-                    <div className="">
+                    <div className="shadow-sm transition-all  hover:scale-105 cursor-pointer">
                         <Card
-                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSrc="https://i.ibb.co/T45G8Ls/pexels-szelei-robert-1482193.jpg"
                             imgSize="md"
                             className="max-w-xs">
                             <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
@@ -179,7 +180,7 @@ const Home = () => {
                             </Card.Container>
                             <Card.Container className="flex flex-col items-center justify-center">
                                 <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
-                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/nBqb5rW/pexels-spencer-selover-428328.jpg" />
                                 </Card.Container>
                                 <Card.Container className="mb-3 mt-10 text-center">
                                     <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
@@ -189,21 +190,21 @@ const Home = () => {
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Delivered
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">09</Card.Title>
                                     </Card.Container>
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Ratings
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">4.9</Card.Title>
                                     </Card.Container>
                                 </Card.Container>
                             </Card.Container>
                         </Card>
                     </div>
-                    <div className="">
+                    <div className="shadow-sm transition-all  hover:scale-105 cursor-pointer">
                         <Card
-                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSrc="https://i.ibb.co/Y8jG6h8/pexels-sebastian-voortman-189349.jpg"
                             imgSize="md"
                             className="max-w-xs">
                             <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
@@ -211,31 +212,31 @@ const Home = () => {
                             </Card.Container>
                             <Card.Container className="flex flex-col items-center justify-center">
                                 <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
-                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/5RPg7Vz/pexels-arianna-jad-2896853.jpg" />
                                 </Card.Container>
                                 <Card.Container className="mb-3 mt-10 text-center">
-                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">AR Riyad</Card.Title>
                                 </Card.Container>
                                 <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Delivered
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">07</Card.Title>
                                     </Card.Container>
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Ratings
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">4.2</Card.Title>
                                     </Card.Container>
                                 </Card.Container>
                             </Card.Container>
                         </Card>
                     </div>
-                    <div className="">
+                    <div className="shadow-sm transition-all  hover:scale-105 cursor-pointer">
                         <Card
-                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSrc="https://i.ibb.co/SKw8sdK/pexels-eberhard-grossgasteiger-844297-1.jpg"
                             imgSize="md"
                             className="max-w-xs">
                             <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
@@ -243,31 +244,31 @@ const Home = () => {
                             </Card.Container>
                             <Card.Container className="flex flex-col items-center justify-center">
                                 <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
-                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/9y0GrD6/pexels-stefan-stefancik-91227.jpg" />
                                 </Card.Container>
                                 <Card.Container className="mb-3 mt-10 text-center">
-                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Nayem H.</Card.Title>
                                 </Card.Container>
                                 <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Delivered
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">05</Card.Title>
                                     </Card.Container>
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Ratings
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">3.4</Card.Title>
                                     </Card.Container>
                                 </Card.Container>
                             </Card.Container>
                         </Card>
                     </div>
-                    <div className="">
+                    <div className="shadow-sm transition-all  hover:scale-105 cursor-pointer">
                         <Card
-                            imgSrc="https://images.prismic.io/staticmania/821cee7b-6b44-48c4-ab95-8a525056489d_blog.jpg?auto=compress,format"
+                            imgSrc="https://i.ibb.co/MVFQMLX/pexels-561463.jpg"
                             imgSize="md"
                             className="max-w-xs">
                             <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
@@ -275,23 +276,55 @@ const Home = () => {
                             </Card.Container>
                             <Card.Container className="flex flex-col items-center justify-center">
                                 <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
-                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/k4K3BBp/chef-service.jpg" />
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/x3gJKHj/pexels-daniel-xavier-1121796.jpg" />
                                 </Card.Container>
                                 <Card.Container className="mb-3 mt-10 text-center">
-                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">Khairul Islam</Card.Title>
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">K. Jahid</Card.Title>
                                 </Card.Container>
                                 <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Delivered
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">1245M</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">03</Card.Title>
                                     </Card.Container>
                                     <Card.Container className="text-center">
                                         <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
                                             Ratings
                                         </Card.Title>
-                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">58</Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">2.7</Card.Title>
+                                    </Card.Container>
+                                </Card.Container>
+                            </Card.Container>
+                        </Card>
+                    </div>
+                    <div className="shadow-sm transition-all  hover:scale-105 cursor-pointer">
+                        <Card
+                            imgSrc="https://i.ibb.co/b3cNzHm/pexels-samer-daboul-1275413.jpg"
+                            imgSize="md"
+                            className="max-w-xs">
+                            <Card.Container className="absolute right-3.5 top-3.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-metal-200">
+                                <Heart size={20} weight="bold" color="white" />
+                            </Card.Container>
+                            <Card.Container className="flex flex-col items-center justify-center">
+                                <Card.Container className="absolute top-32  rounded-full ring-4 ring-white ring-offset-0">
+                                    <Avatar size="2xl" shape="circle" img="https://i.ibb.co/rtNvqfX/pexels-italo-melo-2379004.jpg" />
+                                </Card.Container>
+                                <Card.Container className="mb-3 mt-10 text-center">
+                                    <Card.Title className="text-body-5 font-semibold text-metal-800 md:text-body-4">K. Hasan</Card.Title>
+                                </Card.Container>
+                                <Card.Container className="flex w-full justify-between border-t border-t-metal-50 px-5 py-3">
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Delivered
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">03</Card.Title>
+                                    </Card.Container>
+                                    <Card.Container className="text-center">
+                                        <Card.Title className="text-body-5 !font-normal text-metal-400 md:text-body-5 md:!font-medium">
+                                            Ratings
+                                        </Card.Title>
+                                        <Card.Title className="!text-body-1 !font-semibold text-metal-800">2.1</Card.Title>
                                     </Card.Container>
                                 </Card.Container>
                             </Card.Container>

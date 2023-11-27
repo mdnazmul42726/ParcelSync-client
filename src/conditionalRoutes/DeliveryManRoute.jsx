@@ -3,10 +3,11 @@ import { AuthContext } from "../AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loader from "../components/Loader";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 const DeliveryManRoute = ({ children }) => {
-    const { user, isLoading } = useContext(AuthContext);
+    const { user, isLoading, logOut } = useContext(AuthContext);
     const { data = [], isPending } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
@@ -27,7 +28,12 @@ const DeliveryManRoute = ({ children }) => {
         return children
     }
 
-    <Navigate to={'/login'} />
+    return (
+        logOut().then(() => {
+            <Navigate  to={'/login'}/>
+        })
+
+    )
 
 };
 

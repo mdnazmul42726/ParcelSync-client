@@ -3,6 +3,7 @@ import { AuthContext } from "../../../AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Avatar, Card } from "keep-react";
+import noData from '../../../assets/BkQxD7wtnZ.gif';
 
 const Review = () => {
     const { user } = useContext(AuthContext);
@@ -14,6 +15,14 @@ const Review = () => {
             return response.data
         }
     });
+
+    if (!data.length) {
+        return (
+            <div className="flex justify-center items-center mt-20">
+                <img className="w-[20%]" src={noData} alt="" />
+            </div>
+        )
+    }
 
     return (
         <div className="flex space-x-5">

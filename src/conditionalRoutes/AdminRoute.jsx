@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import { Navigate } from "react-router-dom";
 
 const AdminRoute = ({ children }) => {
-    const { user, isLoading } = useContext(AuthContext);
+    const { user, isLoading, logOut } = useContext(AuthContext);
     const { data = [], isPending } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
@@ -27,7 +27,12 @@ const AdminRoute = ({ children }) => {
         return children
     }
 
-    <Navigate to={'/login'} />
+    return (
+        logOut().then(() => {
+            <Navigate to={'/login'} />
+        })
+
+    )
 
 };
 

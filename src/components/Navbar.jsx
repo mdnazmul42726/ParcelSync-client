@@ -36,7 +36,7 @@ export const NavbarComponent = () => {
         <Navbar fluid={true} className="">
             <Navbar.Container className="flex items-center justify-between">
                 <Navbar.Brand className="flex items-center">
-                    <img className="w-[40%] hidden md:flex" src={logo} alt="" />
+                    <img className="w-[40%] hidden md:flex" src={logo} alt="Logo" />
                     <h3 className="text-2xl md:-ml-16 font-bold">Parcel<span className="text-[#ef233c]">Sync</span></h3>
                 </Navbar.Brand>
 
@@ -80,11 +80,9 @@ export const NavbarComponent = () => {
                     className="fixed right-0 top-0 bg-white p-10 lg:!w-2/6 xl:!w-1/6 md:!w-2/6 w-1/2"
                 >
                     <Navbar.Container tag="ul" className="flex flex-col gap-5">
-                        <NavLink>Home</NavLink>
-                        <NavLink>Home</NavLink>
-                        <NavLink>Home</NavLink>
-                        <Navbar.Link linkName="News" className="!py-0" />
-                        <Navbar.Link linkName="Resources" className="!py-0" />
+                        <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/'}>Home</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'about'}>About</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/contact'}>Contact</NavLink>
                     </Navbar.Container>
                 </Navbar.Collapse>
             </Navbar.Container>
