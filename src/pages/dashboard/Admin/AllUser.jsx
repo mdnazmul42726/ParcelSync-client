@@ -7,10 +7,11 @@ const AllUser = () => {
     const { data = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/users/v1');
+            const response = await axios.get('http://localhost:5000/users/v1', { headers: { authorization: `${localStorage.getItem('access-token')}` } });
             return response.data
         }
     });
+
 
     function handleUserRole(role, _id, name) {
 

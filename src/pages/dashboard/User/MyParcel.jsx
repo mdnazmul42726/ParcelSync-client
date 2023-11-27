@@ -21,6 +21,9 @@ const MyParcel = () => {
         }
     });
 
+    const totalPayment = item.reduce((acc, item) => acc + item.price, 0)
+    console.log(totalPayment);
+
     function handleCancelBook(_id) {
         Swal.fire({
             title: "Are you sure?",
@@ -195,6 +198,12 @@ const MyParcel = () => {
                             <button className={book.status !== 'Pending' ? 'btn-disabled text-slate-300' : 'text-red-600'}> <a className="font-medium hover:underline ms-3" onClick={() => handleCancelBook(book._id)}>Cancel</a> </button> </>}
                 </div>
             </div>)}
+            <div className="flex justify-between">
+                <h3 className="text-xl font-semibold">Payable Amount: TK <span>{totalPayment}</span> </h3>
+                <a href="https://shop.bkash.com/jsxjolt01326185000/paymentlink/default-payment" target="_blank" rel="noreferrer">
+                    <button className="py-1 px-5 bg-sky-500 text-white rounded-sm hover:bg-sky-600">Pay</button>
+                </a>
+            </div>
         </div>
 
     );

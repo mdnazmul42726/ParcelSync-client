@@ -8,11 +8,12 @@ import noData from '../../../assets/BkQxD7wtnZ.gif';
 
 const MyDeliveryList = () => {
     const { user } = useContext(AuthContext);
+    const token = { authorization: `${localStorage.getItem('access-token')}` }
 
     const { data = [], refetch } = useQuery({
         queryKey: ['item'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/delivery-man/items?email=${user.email}`);
+            const response = await axios.get(`http://localhost:5000/delivery-man/items?email=${user.email}`, { headers: token });
             return response.data
         }
     });

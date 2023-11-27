@@ -7,11 +7,12 @@ import Loader from "../../../components/Loader";
 const AllParcel = () => {
     const [openModal, setOpenModal] = useState(false);
     const [parcelID, setParcelID] = useState('');
+    const token = { authorization: `${localStorage.getItem('access-token')}` }
 
     const { data = [], refetch, isLoading: booksLoading } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/books/v2');
+            const response = await axios.get('http://localhost:5000/books/v2', { headers: token });
             return response.data;
         }
     });
@@ -19,7 +20,7 @@ const AllParcel = () => {
     const { data: deliveryMan = [], isLoading: deliveryManLoading } = useQuery({
         queryKey: ['delivery dan'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/user/delivery-man');
+            const response = await axios.get('http://localhost:5000/user/delivery-man', { headers: token });
             return response.data
         }
     });

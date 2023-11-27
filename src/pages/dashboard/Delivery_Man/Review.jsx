@@ -7,11 +7,12 @@ import noData from '../../../assets/BkQxD7wtnZ.gif';
 
 const Review = () => {
     const { user } = useContext(AuthContext);
+    const token = { authorization: `${localStorage.getItem('access-token')}` };
 
     const { data = [] } = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/review/v1?email=${user.email}`);
+            const response = await axios.get(`http://localhost:5000/review/v1?email=${user.email}`, { headers: token });
             return response.data
         }
     });
