@@ -55,7 +55,7 @@ const MyDeliveryList = () => {
     }
 
     return (
-        <div data-aos="fade-left">
+        <div >
             <div className="">
                 {data.map(book => <div key={book._id}>
                     <div className="shadow-md mb-7 mt-4 ">

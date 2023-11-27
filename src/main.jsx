@@ -24,6 +24,8 @@ import DeliveryManRoute from "./conditionalRoutes/DeliveryManRoute";
 import MyDeliveryList from "./pages/dashboard/Delivery_Man/MyDeliveryList";
 import Review from "./pages/dashboard/Delivery_Man/Review";
 import DashboardHome from "./pages/dashboard/DashboardHome";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +33,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: '/login', element: <Login /> },
-      { path: '/register', element: <Register /> }
+      { path: '/register', element: <Register /> },
+      { path: '/about', element: <About /> },
+      { path: '/contact', element: <Contact /> }
     ]
   },
   {
