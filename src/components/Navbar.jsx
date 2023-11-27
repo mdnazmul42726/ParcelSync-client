@@ -36,8 +36,8 @@ export const NavbarComponent = () => {
         <Navbar fluid={true} className="">
             <Navbar.Container className="flex items-center justify-between">
                 <Navbar.Brand className="flex items-center">
-                    <img className="w-[40%] hidden md:flex" src={logo} alt="Logo" />
-                    <h3 className="text-2xl md:-ml-16 font-bold">Parcel<span className="text-[#ef233c]">Sync</span></h3>
+                    <Link className="flex items-center" to={'/'}>  <img className="w-[40%] hidden md:flex" src={logo} alt="Logo" />
+                        <h3 className="text-2xl md:-ml-16 font-bold">Parcel<span className="text-[#ef233c]">Sync</span></h3></Link>
                 </Navbar.Brand>
 
                 <Navbar.Container className="flex items-center gap-6">

@@ -1,12 +1,19 @@
 import { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
 const Login = () => {
     const { logInWithEmailAndPassword, signInWithGithub, signInWithGoogle } = useContext(AuthContext);
+
+    // TODO: after login user navigate to hated route
+
+    // const location = useLocation()
+    // console.log(location);
+
+    const navigate = useNavigate()
 
     function handleLogin(event) {
         event.preventDefault();
@@ -15,7 +22,8 @@ const Login = () => {
         const toastID = toast.loading('Working...');
 
         logInWithEmailAndPassword(email, password).then(() => {
-            toast.success('Login Successful.', { id: toastID })
+            toast.success('Login Successful.', { id: toastID });
+            navigate('/')
 
         }).catch(err => toast.error(err.code, { id: toastID }))
 
@@ -27,10 +35,8 @@ const Login = () => {
             toast.success('Login Successful.', { id: toastID })
 
             const userInfo = { name: userCredential.user.displayName, email: userCredential.user.email, accType: 'Customer' };
-            console.log(userInfo);
 
-            axios.post('http://localhost:5000/users/v1', userInfo).then(res => console.log(res.data)).catch(err => console.log(err));
-            console.log(userInfo);
+            axios.post('http://localhost:5000/users/v1', userInfo).then(() => navigate('/')).catch(err => console.log(err));
 
         }).catch(err => toast.error(err.code, { id: toastID }))
     }

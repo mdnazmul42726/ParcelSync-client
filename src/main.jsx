@@ -23,6 +23,7 @@ import AllUser from "./pages/dashboard/Admin/AllUser";
 import DeliveryManRoute from "./conditionalRoutes/DeliveryManRoute";
 import MyDeliveryList from "./pages/dashboard/Delivery_Man/MyDeliveryList";
 import Review from "./pages/dashboard/Delivery_Man/Review";
+import DashboardHome from "./pages/dashboard/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
   {
     path: '/dashboard', element: <UserRoute><Dashboard /></UserRoute>,
     children: [
-      { index: true, element: <div>Hello Home</div> },
+      { index: true, element: <UserRoute><DashboardHome /></UserRoute> },
 
       // Customer routes
       { path: '/dashboard/book-parcel', element: <CustomerRoute><BookParcel /></CustomerRoute> },

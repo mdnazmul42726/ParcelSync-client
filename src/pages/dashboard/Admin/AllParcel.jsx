@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import Loader from "../../../components/Loader";
 
 const AllParcel = () => {
     const [openModal, setOpenModal] = useState(false);
     const [parcelID, setParcelID] = useState('');
 
-    const { data = [], refetch } = useQuery({
+    const { data = [], refetch, isLoading: booksLoading } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
             const response = await axios.get('http://localhost:5000/books/v2');
@@ -15,13 +16,18 @@ const AllParcel = () => {
         }
     });
 
-    const { data: deliveryMan = [] } = useQuery({
+    const { data: deliveryMan = [], isLoading: deliveryManLoading } = useQuery({
         queryKey: ['delivery dan'],
         queryFn: async () => {
             const response = await axios.get('http://localhost:5000/user/delivery-man');
             return response.data
         }
     });
+
+    if (booksLoading || deliveryManLoading) {
+        return <Loader />
+    }
+
 
     function handleDeleteCancelledBook(_id) {
         Swal.fire({
