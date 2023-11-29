@@ -14,7 +14,7 @@ const AllUser = () => {
     const [currentPage, setCurrentPage] = useState(0);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/users/v1?page=${currentPage}&size=${itemPerPage}`, { headers: { authorization: `${localStorage.getItem('access-token')}` } }).then(res => setData(res.data)).catch(err => console.log(err))
+        axios.get(`https://server-iota-peach-25.vercel.app/users/v1?page=${currentPage}&size=${itemPerPage}`, { headers: { authorization: `${localStorage.getItem('access-token')}` } }).then(res => setData(res.data)).catch(err => console.log(err))
     }, [currentPage, itemPerPage])
 
     // const { data = [], refetch } = useQuery({
@@ -56,7 +56,7 @@ const AllUser = () => {
             confirmButtonText: "Yes, Do It"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.patch(`http://localhost:5000/user/role/v1?id=${_id}&role=${role}`).then(res => {
+                axios.patch(`https://server-iota-peach-25.vercel.app/user/role/v1?id=${_id}&role=${role}`).then(res => {
                     console.log(res.data);
                     if (res.data.modifiedCount > 0) {
                         Swal.fire({

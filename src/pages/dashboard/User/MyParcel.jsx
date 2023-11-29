@@ -17,7 +17,7 @@ const MyParcel = () => {
     const { refetch } = useQuery({
         queryKey: ['booked parcel data'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}`);
+            const response = await axios.get(`https://server-iota-peach-25.vercel.app/books/v1?email=${user.email}`);
             return setItem(response.data)
         }
     });
@@ -37,7 +37,7 @@ const MyParcel = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.patch(`http://localhost:5000/book/update/v1/${_id}`).then(res => {
+                axios.patch(`https://server-iota-peach-25.vercel.app/book/update/v1/${_id}`).then(res => {
 
                     if (res.data.modifiedCount > 0) {
                         Swal.fire({
@@ -54,7 +54,7 @@ const MyParcel = () => {
     }
 
     async function handleFilter(status) {
-        const response = await axios.get(`http://localhost:5000/books/v1?email=${user.email}&status=${status}`);
+        const response = await axios.get(`https://server-iota-peach-25.vercel.app/books/v1?email=${user.email}&status=${status}`);
         setItem(response.data)
     }
 
@@ -80,7 +80,7 @@ const MyParcel = () => {
             return
         }
 
-        axios.post('http://localhost:5000/review/v1', data).then(res => {
+        axios.post('https://server-iota-peach-25.vercel.app/review/v1', data).then(res => {
 
             if (res.data.insertedId) {
                 Swal.fire({

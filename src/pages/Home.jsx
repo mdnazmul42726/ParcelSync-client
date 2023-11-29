@@ -18,7 +18,7 @@ const Home = () => {
     const { data = [] } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/books/count/v1');
+            const response = await axios.get('https://server-iota-peach-25.vercel.app/books/count/v1');
             return response.data
         }
     });

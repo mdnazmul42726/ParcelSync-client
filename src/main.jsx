@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       // Customer routes
       { path: '/dashboard/book-parcel', element: <CustomerRoute><BookParcel /></CustomerRoute> },
       { path: '/dashboard/my-parcel', element: <CustomerRoute><MyParcel /></CustomerRoute> },
-      { path: '/dashboard/edit/:id', element: <CustomerRoute><UpdateBook /></CustomerRoute>, loader: ({ params }) => fetch(`http://localhost:5000/book/edit/${params.id}`) },
+      { path: '/dashboard/edit/:id', element: <CustomerRoute><UpdateBook /></CustomerRoute>, loader: ({ params }) => fetch(`https://server-iota-peach-25.vercel.app/book/edit/${params.id}`) },
 
       // all type of logged in user
       { path: '/dashboard/profile', element: <UserRoute><Profile /></UserRoute> },
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       // Admin routes
       { path: '/dashboard/all-parcels', element: <AdminRoute><AllParcel /></AdminRoute> },
       { path: '/dashboard/all-deliveryman', element: <AdminRoute><AllDeliveryMan /></AdminRoute> },
-      { path: '/dashboard/users', element: <AdminRoute><AllUser /></AdminRoute>, loader: () => fetch('http://localhost:5000/total-users') },
+      { path: '/dashboard/users', element: <AdminRoute><AllUser /></AdminRoute>, loader: () => fetch('https://server-iota-peach-25.vercel.app/total-users') },
 
       // Delivery man routes
       { path: '/dashboard/my-delivery-list', element: <DeliveryManRoute><MyDeliveryList /></DeliveryManRoute> },

@@ -37,7 +37,7 @@ const BookParcel = () => {
 
         const bookData = { senderEmail, senderName, senderPhoneNumber, parcelType, parcelWeight, RequestedDeliveryDate, receiverEmail, receiverName, ReceiverPhoneNumber, deliveryAddress, deliveryAddressLatitude, deliveryAddressLongitude, price, bookingDate, status: 'Pending' };
 
-        axios.post('http://localhost:5000/book/v1', bookData).then(res => {
+        axios.post('https://server-iota-peach-25.vercel.app/book/v1', bookData).then(res => {
 
             if (res.data.insertedId) {
                 Swal.fire({

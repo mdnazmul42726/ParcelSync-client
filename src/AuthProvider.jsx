@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
 
             if (currentUser) {
                 const user = { email: currentUser.email };
-                axios.post('http://localhost:5000/jwt', user).then(res => {
+                axios.post('https://server-iota-peach-25.vercel.app/jwt', user).then(res => {
 
                     if (res.data.token) {
                         localStorage.setItem('access-token', res.data.token);

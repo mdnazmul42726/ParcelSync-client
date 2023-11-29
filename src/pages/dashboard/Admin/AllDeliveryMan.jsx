@@ -7,7 +7,7 @@ const AllDeliveryMan = () => {
     const { data = [] } = useQuery({
         queryKey: ['delivery man'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/user/delivery-man', { headers: { authorization: `${localStorage.getItem('access-token')}` } });
+            const response = await axios.get('https://server-iota-peach-25.vercel.app/user/delivery-man', { headers: { authorization: `${localStorage.getItem('access-token')}` } });
             return response.data
         }
     });

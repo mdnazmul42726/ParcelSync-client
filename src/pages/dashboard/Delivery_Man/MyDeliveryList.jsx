@@ -17,7 +17,7 @@ const MyDeliveryList = () => {
     const { data = [], refetch } = useQuery({
         queryKey: ['item'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/delivery-man/items?email=${user.email}`, { headers: token });
+            const response = await axios.get(`https://server-iota-peach-25.vercel.app/delivery-man/items?email=${user.email}`, { headers: token });
             return response.data
         }
     });
@@ -41,7 +41,7 @@ const MyDeliveryList = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.patch(`http://localhost:5000/book/delivery-man/status?id=${_id}&status=${status}`).then(res => {
+                axios.patch(`https://server-iota-peach-25.vercel.app/book/delivery-man/status?id=${_id}&status=${status}`).then(res => {
 
                     if (res.data.matchedCount > 0) {
                         Swal.fire({

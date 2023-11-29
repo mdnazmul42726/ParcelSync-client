@@ -9,7 +9,7 @@ const Notification = () => {
     const { data, refetch, isLoading } = useQuery({
         queryKey: ['notifications'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/contacts', { headers: token });
+            const response = await axios.get('https://server-iota-peach-25.vercel.app/contacts', { headers: token });
             return response.data
         }
     });
@@ -26,7 +26,7 @@ const Notification = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5000/contact/${_id}`).then(res => {
+                axios.delete(`https://server-iota-peach-25.vercel.app/contact/${_id}`).then(res => {
 
                     if (res.data.deletedCount > 0) {
                         Swal.fire({

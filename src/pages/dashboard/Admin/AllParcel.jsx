@@ -13,7 +13,7 @@ const AllParcel = () => {
     const { data = [], refetch, isLoading: booksLoading } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/books/v2', { headers: token });
+            const response = await axios.get('https://server-iota-peach-25.vercel.app/books/v2', { headers: token });
             return response.data;
         }
     });
@@ -21,7 +21,7 @@ const AllParcel = () => {
     const { data: deliveryMan = [], isLoading: deliveryManLoading } = useQuery({
         queryKey: ['delivery dan'],
         queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/user/delivery-man', { headers: token });
+            const response = await axios.get('https://server-iota-peach-25.vercel.app/user/delivery-man', { headers: token });
             return response.data
         }
     });
@@ -44,7 +44,7 @@ const AllParcel = () => {
             if (result.isConfirmed) {
 
 
-                axios.delete(`http://localhost:5000/book/delete/${_id}`).then(res => {
+                axios.delete(`https://server-iota-peach-25.vercel.app/book/delete/${_id}`).then(res => {
                     if (res.data.deletedCount > 0) {
                         Swal.fire({
                             title: "Deleted!",
@@ -71,7 +71,7 @@ const AllParcel = () => {
 
         const adminAssignData = { deliveryMan, approximateDeliveryDate, status }
 
-        axios.patch(`http://localhost:5000/book/admin/assign/v1?id=${parcelID}`, adminAssignData).then(res => {
+        axios.patch(`https://server-iota-peach-25.vercel.app/book/admin/assign/v1?id=${parcelID}`, adminAssignData).then(res => {
 
             if (res.data.modifiedCount > 0) {
                 Swal.fire({

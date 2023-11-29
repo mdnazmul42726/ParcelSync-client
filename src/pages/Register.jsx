@@ -53,7 +53,7 @@ const Register = () => {
 
                 const userinfo = { name, email, accType, ID: deliveryManID};
                 toast.success('Account created.', { id: toastID })
-                axios.post('http://localhost:5000/users/v1', userinfo).then(res => {
+                axios.post('https://server-iota-peach-25.vercel.app/users/v1', userinfo).then(res => {
                     console.log(res.data);
                 }).catch(err => console.log(err))
 
@@ -72,7 +72,7 @@ const Register = () => {
             const userInfo = { name: userCredential.user.displayName, email: userCredential.user.email, accType: 'Customer' };
             console.log(userInfo);
 
-            axios.post('http://localhost:5000/users/v1', userInfo).then(res => console.log(res)).catch(err => console.log(err));
+            axios.post('https://server-iota-peach-25.vercel.app/users/v1', userInfo).then(res => console.log(res)).catch(err => console.log(err));
             console.log(userInfo);
 
         }).catch(err => toast.error(err.code, { id: toastID }))

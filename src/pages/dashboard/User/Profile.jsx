@@ -15,7 +15,7 @@ const Profile = () => {
     const { data = [], refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/user/v1?email=${user.email}`);
+            const response = await axios.get(`https://server-iota-peach-25.vercel.app/user/v1?email=${user.email}`);
             return response.data
         }
     });
@@ -31,7 +31,7 @@ const Profile = () => {
 
         const updatedInfo = { name, gender, currentAddress, permanentAddress, contactNumber }
 
-        axios.patch(`http://localhost:5000/user/update?email=${user.email}`, updatedInfo).then(res => {
+        axios.patch(`https://server-iota-peach-25.vercel.app/user/update?email=${user.email}`, updatedInfo).then(res => {
 
             if (res.data.modifiedCount > 0) {
                 Swal.fire({

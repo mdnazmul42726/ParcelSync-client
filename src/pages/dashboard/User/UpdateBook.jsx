@@ -39,7 +39,7 @@ const UpdateBook = () => {
 
         const updatedData = { senderEmail, senderName, senderPhoneNumber, parcelType, parcelWeight, RequestedDeliveryDate, receiverEmail, receiverName, ReceiverPhoneNumber, deliveryAddress, deliveryAddressLatitude, deliveryAddressLongitude, price };
 
-        axios.patch(`http://localhost:5000/book/item/update?id=${bookItem._id}`, updatedData).then(res => {
+        axios.patch(`https://server-iota-peach-25.vercel.app/book/item/update?id=${bookItem._id}`, updatedData).then(res => {
 
             // if(res.data.)
             console.log(res.data);

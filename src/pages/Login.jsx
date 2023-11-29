@@ -37,7 +37,7 @@ const Login = () => {
 
             const userInfo = { name: userCredential.user.displayName, email: userCredential.user.email, accType: 'Customer' };
 
-            axios.post('http://localhost:5000/users/v1', userInfo).then(() => navigate('/')).catch(err => console.log(err));
+            axios.post('https://server-iota-peach-25.vercel.app/users/v1', userInfo).then(() => navigate('/')).catch(err => console.log(err));
 
         }).catch(err => toast.error(err.code, { id: toastID }))
     }

@@ -13,7 +13,7 @@ const Review = () => {
     const { data = [] } = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/review/v1?email=${user.email}`, { headers: token });
+            const response = await axios.get(`https://server-iota-peach-25.vercel.app/review/v1?email=${user.email}`, { headers: token });
             return response.data
         }
     });

@@ -26,7 +26,7 @@ const Dashboard = () => {
     const { data = [] } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const response = await axios.get(`http://localhost:5000/user/v1?email=${user.email}`);
+            const response = await axios.get(`https://server-iota-peach-25.vercel.app/user/v1?email=${user.email}`);
             return response.data
         }
     });

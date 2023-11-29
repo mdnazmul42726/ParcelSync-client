@@ -13,7 +13,7 @@ const Contact = () => {
 
         const contact = { firstName, lastName, email, msg };
 
-        axios.post('http://localhost:5000/contact', contact).then(res => {
+        axios.post('https://server-iota-peach-25.vercel.app/contact', contact).then(res => {
 
             if (res.data.insertedId) {
                 Swal.fire({
