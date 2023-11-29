@@ -79,7 +79,7 @@ const Register = () => {
     }
 
     return (
-        <div className='w-full md:w-[70%] lg:w-[35%] mx-auto mb-20 mt-10 md:mt-2 lg:mt-0 shadow-md rounded-md p-3'>
+        <div className='w-full md:w-[70%] lg:w-[35%] mx-auto mb-20 mt-10 md:mt-2 lg:mt-0 shadow-md rounded-md p-3' data-aos="zoom-out">
             <form className="card-body" onSubmit={handleRegister}>
                 <h1 className="text-3xl font-bold">Register</h1>
                 <div className="form-control">

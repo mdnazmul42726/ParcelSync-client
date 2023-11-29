@@ -16,6 +16,7 @@
     "firebase": "^10.6.0",
     "jsonwebtoken": "^9.0.2",
     "keep-react": "^1.0.2",
+    "leaflet": "^1.9.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
@@ -24,12 +25,14 @@
     "react-headroom": "^3.2.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
+    "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.20.0",
     "react-scroll-trigger": "^0.6.14",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.10.1"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.8",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",

@@ -5,9 +5,12 @@ import axios from "axios";
 import { IoLocationSharp } from "react-icons/io5";
 import Swal from "sweetalert2";
 import noData from '../../../assets/BkQxD7wtnZ.gif';
+import MapComponent from "./MapComponent";
 
 const MyDeliveryList = () => {
     document.title = 'ParcelSync | My Delivery List'
+    const latitude = 23.9970;
+    const longitude = 91.1093;
     const { user } = useContext(AuthContext);
     const token = { authorization: `${localStorage.getItem('access-token')}` }
 
@@ -96,7 +99,22 @@ const MyDeliveryList = () => {
                                         <td className="px-6 py-4">{book.deliveryAddress}</td>
                                         <td className="px-6 py-4">{book.ReceiverPhoneNumber}</td>
                                         <td className={book.status == 'Pending' ? 'px-6 py-4' : book.status == 'On The Way' ? 'px-6 py-4 text-sky-500' : book.status == 'Cancelled' ? 'px-6 py-4 text-red-600' : 'px-6 py-4 text-blue-600'}>{book.status}</td>
-                                        <td className="px-6 cursor-pointer hover:text-red-600 py-4"><IoLocationSharp className="text-xl" /></td>
+                                        <td className="px-6 cursor-pointer hover:text-red-600 py-4" onClick={() => document.getElementById('my_modal_3').showModal()}><IoLocationSharp className="text-xl" />
+
+                                            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                                            {/* <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>open modal</button> */}
+                                            <dialog id="my_modal_3" className="modal">
+                                                <div className="modal-box">
+                                                    <form method="dialog">
+                                                        {/* if there is a button in form, it will close the modal */}
+                                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                    </form>
+                                                    <MapComponent latitude={Number(book.
+                                                        deliveryAddressLatitude)} longitude={Number(book.deliveryAddressLongitude
+                                                        )} />
+                                                </div>
+                                            </dialog>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

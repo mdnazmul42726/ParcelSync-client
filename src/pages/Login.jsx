@@ -43,7 +43,7 @@ const Login = () => {
     }
 
     return (
-        <div className="w-full md:w-[70%] lg:w-[35%] mx-auto mb-20 mt-10 md:mt-2 lg:mt-0 shadow-md p-5 rounded-md">
+        <div className="w-full md:w-[70%] lg:w-[35%] mx-auto mb-20 mt-10 md:mt-2 lg:mt-0 shadow-md p-5 rounded-md" data-aos="zoom-out" >
             <form className="card-body" onSubmit={handleLogin}>
                 <h1 className="text-3xl font-bold">Login</h1>
                 <div className="form-control">

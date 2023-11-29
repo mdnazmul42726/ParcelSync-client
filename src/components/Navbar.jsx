@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const NavbarComponent = () => {
     const { user } = useContext(AuthContext);
-    const token = { authorization: `${localStorage.getItem('access-token')}` }
+    // const token = { authorization: `${localStorage.getItem('access-token')}` }
 
     const { data } = useQuery({
         queryKey: ['user'],
@@ -47,7 +47,7 @@ export const NavbarComponent = () => {
         <div className="z-50 bg-black">
             <Headroom>  <Navbar fluid={true} className="">
                 <Navbar.Container className="flex items-center justify-between">
-                    <Navbar.Brand className="flex items-center">
+                    <Navbar.Brand className="flex items-center -ml-20">
                         <Link className="flex items-center" to={'/'}>  <img className="w-[40%] hidden md:flex" src={logo} alt="Logo" />
                             <h3 className="text-2xl md:-ml-16 font-bold">Parcel<span className="text-[#ef233c]">Sync</span></h3></Link>
                     </Navbar.Brand>
