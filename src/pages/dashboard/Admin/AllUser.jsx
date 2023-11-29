@@ -1,16 +1,47 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AllUser = () => {
     document.title = 'ParcelSync | All Users'
-    const { data = [], refetch } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const response = await axios.get('http://localhost:5000/users/v1', { headers: { authorization: `${localStorage.getItem('access-token')}` } });
-            return response.data
+    const [data, setData] = useState([])
+    const { count: totalItem } = useLoaderData();
+    const itemPerPage = 5
+    const numberOfPages = Math.ceil(totalItem / itemPerPage);
+    const pages = [...Array(numberOfPages).keys()];
+    const [currentPage, setCurrentPage] = useState(0);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/users/v1?page=${currentPage}&size=${itemPerPage}`, { headers: { authorization: `${localStorage.getItem('access-token')}` } }).then(res => setData(res.data)).catch(err => console.log(err))
+    }, [currentPage, itemPerPage])
+
+    // const { data = [], refetch } = useQuery({
+    //     queryKey: ['users'],
+    //     queryFn: async () => {
+    //         const response = await ;
+    //         return response.data
+    //     }
+    // });
+
+
+    // function handleChangeParPage(event) {
+    //     const itemParpage = parseInt(event.target.value);
+    //     setItemPerPage
+    // }
+
+    function handlePrevPage() {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
         }
-    });
+    }
+
+    function handleNextPage() {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
 
 
     function handleUserRole(role, _id, name) {
@@ -33,7 +64,6 @@ const AllUser = () => {
                             text: `You have successfully updated ${name}'s permission level. to ${role}`,
                             icon: "success"
                         });
-                        refetch();
 
                     } else if (res.data.matchedCount > 0 && res.data.modifiedCount == 0) {
                         Swal.fire({
@@ -74,7 +104,17 @@ const AllUser = () => {
                     </table>
                 </div>
             </div>
-        </div>
+            <div className="my-10 flex justify-center">
+                <button className="mr-3" onClick={handlePrevPage}>Prev</button>
+                {pages.map(page => <button onClick={() => setCurrentPage(page)} key={page} className={currentPage == page ? 'bg-sky-500 my-10 mr-3 p-3 rounded-md text-white' : 'my-10 mr-3 p-3 rounded-md border'}>{page}</button>)}
+                <button className="ml-3" onClick={handleNextPage}>Next</button>
+                {/* <select name="" id="" onChange={handleChangeParPage}>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select> */}
+            </div>
+        </div >
     );
 };
 

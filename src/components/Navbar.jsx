@@ -1,16 +1,27 @@
-
 import { Navbar } from "keep-react";
 import { Link, NavLink } from "react-router-dom";
 import logo from '../assets/logo.png';
-import { useContext} from "react";
+import { useContext } from "react";
 import { AuthContext } from "../AuthProvider";
 import Swal from "sweetalert2";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase.config";
 import Headroom from "react-headroom";
+import { IoMdNotifications } from "react-icons/io";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export const NavbarComponent = () => {
     const { user } = useContext(AuthContext);
+    const token = { authorization: `${localStorage.getItem('access-token')}` }
+
+    const { data } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
+            const response = await axios.get(`http://localhost:5000/user/v1?email=${user.email}`);
+            return response.data;
+        }
+    });
 
     function handleLogOut() {
         Swal.fire({
@@ -53,7 +64,7 @@ export const NavbarComponent = () => {
                                 <div className="hidden lg:flex gap-4">
                                     <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/'}>Home</NavLink>
                                     <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/about'}>About</NavLink>
-                                    <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/contact'}>Contact</NavLink>
+                                    {data?.accType == 'Admin' ? <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/notification'}><IoMdNotifications className="text-2xl" /></NavLink> : <NavLink className={({ isActive }) => isActive ? 'text-red-500' : ''} to={'/contact'}>Contact</NavLink>}
                                 </div>
                                 {user ? <div className="dropdown dropdown-end">
                                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

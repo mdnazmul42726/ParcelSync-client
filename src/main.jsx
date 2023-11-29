@@ -26,16 +26,19 @@ import Review from "./pages/dashboard/Delivery_Man/Review";
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import ErrorPage from "./pages/ErrorPage";
+import Notification from "./pages/dashboard/Admin/Notification";
 
 const router = createBrowserRouter([
   {
-    path: "/", element: <Root />,
+    path: "/", element: <Root />, errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
       { path: '/login', element: <Login /> },
       { path: '/register', element: <Register /> },
       { path: '/about', element: <About /> },
-      { path: '/contact', element: <Contact /> }
+      { path: '/contact', element: <Contact /> },
+      { path: 'notification', element: <Notification /> },
     ]
   },
   {
@@ -54,7 +57,7 @@ const router = createBrowserRouter([
       // Admin routes
       { path: '/dashboard/all-parcels', element: <AdminRoute><AllParcel /></AdminRoute> },
       { path: '/dashboard/all-deliveryman', element: <AdminRoute><AllDeliveryMan /></AdminRoute> },
-      { path: '/dashboard/users', element: <AdminRoute><AllUser /></AdminRoute> },
+      { path: '/dashboard/users', element: <AdminRoute><AllUser /></AdminRoute>, loader: () => fetch('http://localhost:5000/total-users') },
 
       // Delivery man routes
       { path: '/dashboard/my-delivery-list', element: <DeliveryManRoute><MyDeliveryList /></DeliveryManRoute> },
