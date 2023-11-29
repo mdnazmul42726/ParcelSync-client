@@ -1,4 +1,4 @@
-# [Your Project Name]
+# ParcelSync
 
 This project is a full-stack delivery system web application built to streamline parcel bookings, deliveries, and management. It includes features for users, delivery personnel, and administrators.
 
