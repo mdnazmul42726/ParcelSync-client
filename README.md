@@ -57,4 +57,6 @@ This project is a full-stack delivery system web application built to streamline
 
 10. **JWT Authentication:**
     - Implemented for 2-3 routes.
+   
+      Live Link: https://simple-firebase-recap-e8453.firebaseapp.com/
     
