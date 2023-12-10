@@ -2,6 +2,18 @@
 
 This project is a full-stack delivery system web application built to streamline parcel bookings, deliveries, and management. It includes features for users, delivery personnel, and administrators.
 
+## Login credentials: 
+
+### Admin
+#### Email: admin@parcelsync.com
+#### Password: P@ssw0rd
+
+### Delivery Men’s
+#### Email: deliveryman@parcelsync.com
+#### Password: P@ssw0rd
+
+
+
 ## Table of Contents
 
 - [Features](#features)
